@@ -1,5 +1,9 @@
 # matters-fullstack-challenge
 
+Participant should clone this repo, and submit to a new branch with the participant's name.
+
+---
+
 Please write a simple web app with the following features:
 
 1. Stored text input from user.

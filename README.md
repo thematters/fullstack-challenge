@@ -6,8 +6,8 @@ Participant should clone this repo, and submit to a new branch with the particip
 
 Please write a simple website with the following features:
 
-1. UI for user to input text and submit.
-2. Stored text input from user.
+1. UI for user to input and submit text.
+2. Stored the text input from user.
 3. Generate (or redirect to) an URL for the input text.
 4. Retrieve a piece of text for a given URL.
 

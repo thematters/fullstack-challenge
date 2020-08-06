@@ -1,0 +1,13 @@
+# Editor settings
+.vscode
+
+# Local System
+.DS_store
+
+# Local env
+.env
+
+# Dependency directories
+node_modules
+
+build

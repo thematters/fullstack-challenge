@@ -23,4 +23,6 @@ Please write a simple website with the given features. The participant should cl
 - server: Node.js
 - storage: IPFS (static), OrbitDB (dynamic)
 
+In order to make the process shorter, we've provided template and config exmaples in `client` and `server`, and feel free to refactor them and use your favorite tools and packages.
+
 Note: although using IPFS/OrbitDB on frontend and omit server would be easier, please treat IPFS as an external service, and connect to it via a data fetching layer.

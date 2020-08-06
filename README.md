@@ -2,33 +2,20 @@
 
 Please write a simple website with the given features. The participant should clone this repo, and submit to a new branch with the participant's name.
 
-There are 3 versions of this chanllenge, with increasing difficulty. The participant only need to choose one version.
-
 ---
 
-## V1
+### Required features
 
-1. UI for user to enter and submit text.
-2. Storage for the text input from user.
-3. Generate (or redirect to) an URL for the input text.
-4. Retrieve a piece of text for a given URL.
+1. UI that can render list of stored articles.
+2. UI for user to submit an article with title and text.
+3. After the user submit, store the article and display notification stating the reuqest is successful or failed.
 
-## V2
+### Bouns features
 
-1. UI for user to enter and submit text.
-2. After the user submit, timeout for 30 seconds, then store the user input.
-3. Notify the user when timeout finishes, and display the text content in the notification.
+1. Generate (or redirect to) an URL for the article.
+2. Pagnation of article list.
 
-## V3
-
-1. UI for user to submit an article with title and text.
-2. Storage the article from user.
-3. When user submit an article, allow the user to choose from a list of titles if the user have submitted articles before, then store the choice as the upstrem of the article.
-4. UI that can render the upstream/downstream tree structure of articles.
-
----
-
-Recommended stack:
+### Recommended stack:
 
 - language: typescript
 - frontend: React

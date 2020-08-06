@@ -1,6 +1,9 @@
 # Editor settings
 .vscode
 
+# Cache
+.cache
+
 # Local System
 .DS_store
 
@@ -10,4 +13,6 @@
 # Dependency directories
 node_modules
 
+# Output
 build
+dist

@@ -17,7 +17,7 @@ Please write a simple website with the given features. The participant should cl
 
 ### Recommended stack:
 
-- language: typescript
+- language: TypeScript
 - frontend: React
 - data fetching: GraphQL
 - server: Node.js

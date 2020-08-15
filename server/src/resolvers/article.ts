@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 import { IFieldResolver } from 'apollo-server';
 
+import { articleStore } from '../stores';
+
 import {
   MutationAddArticleArgs,
   Mutation,
@@ -10,18 +12,17 @@ import {
 export const articles: IFieldResolver<
   null,
   null
-> = async (): Promise<Query['articles']> => ([{
-  id: '1',
-  title: 'Hi',
-  content: 'content',
-}]);
+> = async (): Promise<Query['articles']> => articleStore.find();
 
 export const addArticle: IFieldResolver<
   null,
   null,
   MutationAddArticleArgs
-> = async (_, { input }): Promise<Mutation['addArticle']> => ({
-  id: '1',
-  title: 'Hi',
-  content: 'content',
-});
+> = async (_, { input }): Promise<Mutation['addArticle']> => {
+  const hash = await articleStore.create(input);
+
+  return {
+    id: hash,
+    ...input,
+  };
+};

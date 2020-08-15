@@ -6,7 +6,7 @@
     "node": ">=12"
   },
   "scripts": {
-    "start": "ts-node src"
+    "start": "nodemon --exec ts-node src"
   },
   "dependencies": {
     "apollo": "^2.30.2",
@@ -29,6 +29,7 @@
     "eslint": "^7.7.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
+    "nodemon": "^2.0.4",
     "prettier": "^2.0.5",
     "ts-node": "^8.10.2",
     "tslint": "^6.1.3"

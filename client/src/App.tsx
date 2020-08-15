@@ -19,7 +19,7 @@ export const App: React.FC = () => (
       </Nav.Item>
       <Nav.Item as="li">
         <Nav.Link as="span">
-          <Link to="/submit">Submit</Link>
+          <Link to="/articles/submit">Submit</Link>
         </Nav.Link>
       </Nav.Item>
     </Nav>

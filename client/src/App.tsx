@@ -1,33 +1,28 @@
 import React from 'react';
 import { renderRoutes } from 'react-router-config';
-import {
-  BrowserRouter as Router,
-  Link,
-} from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { Container } from 'react-bootstrap';
 
-import { Container, Nav } from 'react-bootstrap';
+import { MyNav } from './components';
 
 import { routes } from './routes';
 
-export const App: React.FC = () => (
-  <Router>
-    <Nav as="ul">
-      <Nav.Item as="li">
-        <Nav.Link as="span">
-          <Link to="/">The Articles.</Link>
-        </Nav.Link>
-      </Nav.Item>
-      <Nav.Item as="li">
-        <Nav.Link as="span">
-          <Link to="/articles/submit">Submit</Link>
-        </Nav.Link>
-      </Nav.Item>
-    </Nav>
+const client = new ApolloClient({
+  uri: process.env.GQL_URL || 'http://localhost:4000',
+  cache: new InMemoryCache(),
+});
 
-    <Container>
-      {renderRoutes(routes)}
-    </Container>
-  </Router>
+export const App: React.FC = () => (
+  <ApolloProvider client={client}>
+    <Router>
+      <MyNav />
+
+      <Container>
+        {renderRoutes(routes)}
+      </Container>
+    </Router>
+  </ApolloProvider>
 );
 
 export default App;

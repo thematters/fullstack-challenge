@@ -1,3 +1,3 @@
-export { Articles } from './Articles';
-export { Article } from './Article';
-export { Submit } from './Submit';
+export * from './Articles';
+export * from './Article';
+export * from './Submit';

@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "description": "codebase of client",
+  "license": "GNU",
   "engines": {
     "node": ">=12"
   },
@@ -9,6 +10,7 @@
     "start": "parcel -p 8000 watch src/index.html --open"
   },
   "dependencies": {
+    "@apollo/client": "^3.1.3",
     "@apollo/react-hooks": "^4.0.0",
     "apollo-boost": "^0.4.9",
     "bootstrap": "^4.5.2",

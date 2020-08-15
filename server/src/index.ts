@@ -12,9 +12,6 @@ require('dotenv').config();
 
 // init server
 const server = new ApolloServer({
-  cors: {
-    origin: [],
-  },
   debug: true,
   resolvers,
   typeDefs: Object.values(types),

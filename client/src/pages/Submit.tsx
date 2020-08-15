@@ -1,6 +1,8 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 
+import { Redirect } from 'react-router-dom';
+import { useAddArticle } from '../gqls/article';
 import { useForm } from '../hooks';
 
 const INIT_STATE = {
@@ -9,12 +11,17 @@ const INIT_STATE = {
 };
 
 export const Submit: React.FC = () => {
+  const [addArticle, { data }] = useAddArticle();
   const {
     values,
     handleChange,
     handleSubmit,
-  } = useForm(INIT_STATE, () => {
-    console.log(values);
+  } = useForm(INIT_STATE, async () => {
+    await addArticle({ variables: { input: values } });
+
+    console.log({ data });
+
+    return <Redirect to="/" />;
   });
 
   return (

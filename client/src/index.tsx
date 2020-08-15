@@ -3,6 +3,9 @@
  * make it live with features we requested. :)
  */
 
+// eslint-disable-next-line import/no-extraneous-dependencies
+import 'regenerator-runtime/runtime';
+
 import React from 'react';
 import { render } from 'react-dom';
 

@@ -1,9 +1,8 @@
 import { gql } from 'apollo-server';
 
 export const rootType = gql`
-  schema {
-    query: Query
-    mutation: Mutation
+  interface Node {
+    id: ID!
   }
 
   type Query { _: Boolean }

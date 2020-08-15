@@ -6,7 +6,7 @@
     "node": ">=12"
   },
   "scripts": {
-    "start": "nodemon --exec ts-node src"
+    "start": "nodemon -e ts --exec ts-node src"
   },
   "dependencies": {
     "apollo": "^2.30.2",

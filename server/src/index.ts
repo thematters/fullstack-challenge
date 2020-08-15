@@ -3,7 +3,10 @@
  * make it live with features we requested. :)
  */
 
-import { ApolloServer, gql } from 'apollo-server';
+import { ApolloServer } from 'apollo-server';
+
+import * as types from './types';
+import { resolvers } from './resolvers';
 
 require('dotenv').config();
 
@@ -14,20 +17,8 @@ const server = new ApolloServer({
   },
   dataSources: () => ({ }),
   debug: true,
-  resolvers: {
-    Query: {},
-    // Mutation: {},
-  },
-  typeDefs: gql`
-    type Article {
-      title: String
-      content: String
-    }
-
-    type Query {
-      articles: [Article]
-    }
-  `,
+  resolvers,
+  typeDefs: Object.values(types),
 });
 
 const port = process.env.SERVER_PORT || 4000;

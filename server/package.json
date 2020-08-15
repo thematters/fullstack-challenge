@@ -6,7 +6,7 @@
     "node": ">=12"
   },
   "scripts": {
-    "start": ""
+    "start": "ts-node src"
   },
   "dependencies": {
     "apollo": "^2.30.2",
@@ -30,6 +30,7 @@
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
     "prettier": "^2.0.5",
+    "ts-node": "^8.10.2",
     "tslint": "^6.1.3"
   }
 }

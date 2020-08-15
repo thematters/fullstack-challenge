@@ -1,12 +1,11 @@
 /**
  * This is an incomplete script of apollo server. Please
  * make it live with features we requested. :)
- *
  */
 
-require('dotenv').config()
+import { ApolloServer, gql } from 'apollo-server';
 
-import { ApolloServer, gql } from 'apollo-server'
+require('dotenv').config();
 
 // init server
 const server = new ApolloServer({
@@ -17,21 +16,23 @@ const server = new ApolloServer({
   debug: true,
   resolvers: {
     Query: {},
-    Mutation: {},
+    // Mutation: {},
   },
   typeDefs: gql`
     type Article {
-      title: string
-      content: string
+      title: String
+      content: String
     }
 
     type Query {
       articles: [Article]
     }
   `,
-})
+});
+
+const port = process.env.SERVER_PORT || 4000;
 
 // run server up
 server
-  .listen({ port: '' })
-  .then(({ url }) => console.log(`Server is ready at ${url}`))
+  .listen({ port })
+  .then(({ url }) => console.log(`Server is ready at ${url}`));

@@ -1,11 +1,27 @@
 /* eslint-disable no-unused-vars */
 import { IFieldResolver } from 'apollo-server';
 
-import { Article } from '../types/types';
+import {
+  MutationAddArticleArgs,
+  Mutation,
+  Query,
+} from '../types';
 
-// eslint-disable-next-line import/prefer-default-export
-export const articles: IFieldResolver<null, null> = (): Article[] => ([{
+export const articles: IFieldResolver<
+  null,
+  null
+> = async (): Promise<Query['articles']> => ([{
   id: '1',
   title: 'Hi',
   content: 'content',
 }]);
+
+export const addArticle: IFieldResolver<
+  null,
+  null,
+  MutationAddArticleArgs
+> = async (_, { input }): Promise<Mutation['addArticle']> => ({
+  id: '1',
+  title: 'Hi',
+  content: 'content',
+});

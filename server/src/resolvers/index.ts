@@ -1,14 +1,16 @@
 // eslint-disable-next-line no-unused-vars
 import { IResolvers } from 'apollo-server';
 
-import { articles } from './article';
+import { articles, addArticle } from './article';
 
 export const resolvers: IResolvers = {
   Query: {
     articles,
   },
 
-  // Mutation: {},
+  Mutation: {
+    addArticle,
+  },
 };
 
 export default resolvers;

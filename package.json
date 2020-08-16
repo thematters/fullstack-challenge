@@ -1,0 +1,22 @@
+{
+  "name": "matters-fullstack-challenge",
+  "version": "1.0.0",
+  "description": "## server",
+  "main": "index.js",
+  "scripts": {
+    "install:all": "cd client; npm i; cd -; cd server; npm i",
+    "start:server": "cd server; npm start",
+    "start:client": "cd client; npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EastSun5566/matters-fullstack-challenge.git"
+  },
+  "keywords": [],
+  "author": "Michael",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EastSun5566/matters-fullstack-challenge/issues"
+  },
+  "homepage": "https://github.com/EastSun5566/matters-fullstack-challenge#readme"
+}

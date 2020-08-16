@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "description": "codebase of client",
-  "license": "MIT",
+  "license": "ISC",
   "engines": {
     "node": ">=12"
   },

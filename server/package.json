@@ -2,7 +2,7 @@
   "name": "server",
   "version": "0.1.0",
   "description": "codebase of server",
-  "license": "MIT",
+  "license": "ISC",
   "engines": {
     "node": ">=12"
   },

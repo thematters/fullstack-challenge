@@ -1,3 +1,4 @@
+// @ts-ignore
 import IPFS from 'ipfs';
 import OrbitDB from 'orbit-db';
 

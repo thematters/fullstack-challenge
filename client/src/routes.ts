@@ -11,7 +11,7 @@ export const routes: RouteConfig[] = [
   },
   {
     exact: true,
-    path: '/articles/submit',
+    path: '/articles/new',
     component: Submit,
   },
   {

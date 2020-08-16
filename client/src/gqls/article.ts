@@ -35,5 +35,5 @@ const ADD_ARTICLE = gql`
   }
 `;
 
-export const useArticles = () => useQuery<ArticlesData>(ARTICLES);
+export const useArticles = () => useQuery<ArticlesData>(ARTICLES, { fetchPolicy: 'no-cache' });
 export const useAddArticle = () => useMutation<AddArticleData, AddArticleVars>(ADD_ARTICLE);

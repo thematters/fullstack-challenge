@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 export const useForm = <S extends {}>(
   initValues: S,
-  onSubmit?: () => void,
+  onSubmit?: (values: S) => void,
 ) => {
   const [values, setValues] = useState(initValues);
 
@@ -16,7 +16,7 @@ export const useForm = <S extends {}>(
 
   const handleSubmit = (event: React.FormEvent<HTMLElement>) => {
     event.preventDefault();
-    if (onSubmit) onSubmit();
+    if (onSubmit) onSubmit(values);
   };
 
   return { values, handleChange, handleSubmit };

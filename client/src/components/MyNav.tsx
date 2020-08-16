@@ -12,7 +12,7 @@ export const MyNav: React.FC = () => (
     </Nav.Item>
     <Nav.Item as="li">
       <Nav.Link as="span">
-        <Link to="/articles/submit">Submit</Link>
+        <Link to="/articles/new">New</Link>
       </Nav.Link>
     </Nav.Item>
   </Nav>

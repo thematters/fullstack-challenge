@@ -1,7 +1,7 @@
 import React from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
+import { Form, Button, Alert } from 'react-bootstrap';
 
-import { Redirect } from 'react-router-dom';
 import { useAddArticle } from '../gqls/article';
 import { useForm } from '../hooks';
 
@@ -11,18 +11,25 @@ const INIT_STATE = {
 };
 
 export const Submit: React.FC = () => {
-  const [addArticle, { data }] = useAddArticle();
+  const history = useHistory();
+  const [addArticle, { error }] = useAddArticle();
   const {
     values,
     handleChange,
     handleSubmit,
-  } = useForm(INIT_STATE, async () => {
-    await addArticle({ variables: { input: values } });
-
-    console.log({ data });
-
-    return <Redirect to="/" />;
+  } = useForm(INIT_STATE, async (input) => {
+    await addArticle({ variables: { input } });
+    history.push('/');
   });
+
+  if (error) {
+    return (
+      <Alert variant="danger">
+        Error:
+        {error.message}
+      </Alert>
+    );
+  }
 
   return (
     <Form onSubmit={handleSubmit}>

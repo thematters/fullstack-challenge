@@ -18,15 +18,24 @@ export type Node = {
 export type Query = {
   __typename?: 'Query';
   _?: Maybe<Scalars['Boolean']>;
-  articles?: Maybe<Array<Maybe<Article>>>;
+  articles: ArticleConnection;
+  article?: Maybe<Article>;
+};
+
+export type QueryArticlesArgs = {
+  first?: Maybe<Scalars['Int']>;
+  after?: Maybe<Scalars['String']>;
+};
+
+export type QueryArticleArgs = {
+  id: Scalars['ID'];
 };
 
 export type Mutation = {
   __typename?: 'Mutation';
   _?: Maybe<Scalars['Boolean']>;
-  addArticle?: Maybe<Article>;
+  addArticle: Article;
 };
-
 
 export type MutationAddArticleArgs = {
   input: AddArticleInput;
@@ -40,6 +49,18 @@ export type Article = Node & {
   createdAt?: Maybe<Scalars['String']>;
 };
 
+export type PageInfo = {
+  __typename?: 'PageInfo';
+  hasNext: Scalars['Boolean'];
+  total?: Maybe<Scalars['Int']>;
+};
+
+export type ArticleConnection = {
+  __typename?: 'ArticleConnection';
+  nodes: Array<Article>;
+  pageInfo: PageInfo;
+};
+
 export type AddArticleInput = {
   title: Scalars['String'];
   content?: Maybe<Scalars['String']>;
@@ -49,4 +70,3 @@ export enum CacheControlScope {
   Public = 'PUBLIC',
   Private = 'PRIVATE'
 }
-

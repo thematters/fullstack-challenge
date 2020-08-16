@@ -5,7 +5,7 @@
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": true,
-    "target": "esnext",
+    "target": "es2018",
     "types": ["node"],
     "baseUrl": "./src",
     "paths": {},

@@ -1,25 +1,39 @@
 import { gql } from 'apollo-server';
 
 export const articleType = gql`
-    type Article implements Node {
-      id: ID!
-      title: String!
-      content: String
-      createdAt: String
-    }
+  type Article implements Node {
+    id: ID!
+    title: String!
+    content: String
+    createdAt: String
+  }
 
-    extend type Query {
-      articles: [Article]
-    }
+  type PageInfo {
+    hasNext: Boolean!
+    total: Int
+  }
 
-    input AddArticleInput {
-      title: String!
-      content: String
-    }
+  type ArticleConnection {
+    nodes: [Article!]!
+    pageInfo: PageInfo!
+  }
 
-    extend type Mutation {
-      addArticle(input: AddArticleInput!): Article
-    }
-  `;
+  extend type Query {
+    articles(
+      first: Int
+      after: String
+    ): ArticleConnection!
+    article(id: ID!): Article
+  }
+
+  input AddArticleInput {
+    title: String!
+    content: String
+  }
+
+  extend type Mutation {
+    addArticle(input: AddArticleInput!): Article!
+  }
+`;
 
 export default articleType;

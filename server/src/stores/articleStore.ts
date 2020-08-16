@@ -4,6 +4,15 @@ import { getDB } from '../../db';
 
 import { Article, AddArticleInput } from '../types';
 
+interface FindFilter {
+  gt?: string;
+  gte?: string;
+  lt?: string;
+  lte?: string;
+  limit?: number;
+  reverse?: boolean;
+}
+
 class ArticleStore {
   store: FeedStore<Article>;
 
@@ -14,10 +23,25 @@ class ArticleStore {
     this.store = await db.feed('article');
   }
 
-  async find() {
+  async findById(id: string) {
     await this.loadStore();
 
-    return this.store.iterator({ limit: -1 })
+    const { hash, payload } = this.store.get(id);
+
+    return {
+      ...payload.value,
+      id: hash,
+    };
+  }
+
+  async find(findFilter: FindFilter) {
+    await this.loadStore();
+
+    return this.store
+      .iterator({
+        reverse: true,
+        ...findFilter,
+      })
       .collect()
       .map(({ payload, hash }) => ({
         ...payload.value,
@@ -25,10 +49,22 @@ class ArticleStore {
       }));
   }
 
-  async create(article: AddArticleInput) {
+  async count() {
     await this.loadStore();
 
-    return this.store.add(article);
+    return this.store
+      .iterator({ limit: -1 })
+      .collect()
+      .length;
+  }
+
+  async create(input: AddArticleInput) {
+    await this.loadStore();
+
+    return this.store.add({
+      ...input,
+      createdAt: new Date().toISOString(),
+    });
   }
 }
 

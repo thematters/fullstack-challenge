@@ -16,3 +16,7 @@ node_modules
 # Output
 build
 dist
+
+# IPFS/OrbitDB
+ipfs-repo
+orbitdb

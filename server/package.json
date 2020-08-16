@@ -2,6 +2,7 @@
   "name": "server",
   "version": "0.1.0",
   "description": "codebase of server",
+  "license": "GNU",
   "engines": {
     "node": ">=12"
   },

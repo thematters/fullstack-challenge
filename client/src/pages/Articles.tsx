@@ -9,17 +9,10 @@ export const Articles: React.FC = () => {
   const { loading, error, data } = useArticles();
 
   if (loading) return <p>Loading...</p>;
-  if (error) {
-    return (
-      <Alert variant="danger">
-        Error:
-        {error.message}
-      </Alert>
-    );
-  }
-  if (!data?.articles.length) return <p>No Articles</p>;
+  if (error) return <Alert variant="danger">{error.message}</Alert>;
+  if (!data?.articles.pageInfo.total) return <p>No Articles</p>;
 
-  return data?.articles.map(({ id, title }) => (
+  return data?.articles.nodes.map(({ id, title }) => (
     <ListGroup key={id}>
       <Link to={`articles/${id}`}>
         <ListGroup.Item action>

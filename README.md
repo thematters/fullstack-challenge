@@ -1,6 +1,6 @@
 # Challenge approach by Michael Wang
 
-## Starting
+## Getting started
 
 ```sh
 # install
@@ -12,6 +12,17 @@ npm run start:server
 # start client at http://localhost:8000
 npm run start:client
 ```
+
+## About
+
+- Frontend:
+  - React
+  - React Router for routing
+  - React Bootstrap for basic styling
+  - Apollo Client for data fetching
+- Backend:
+  - Apollo Server for GQL APIs
+  - OrbitDB for datastore
 
 # matters-fullstack-challenge
 

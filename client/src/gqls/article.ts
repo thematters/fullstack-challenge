@@ -1,11 +1,14 @@
 /* eslint-disable no-unused-vars */
-import { useQuery, gql, useMutation } from '@apollo/client';
+import {
+  useQuery, gql, useMutation, useLazyQuery,
+} from '@apollo/client';
 
 import {
   Article,
+  QueryArticleArgs,
+  QueryArticlesArgs,
   ArticleConnection,
-  AddArticleInput,
-  Scalars,
+  MutationAddArticleArgs,
 } from '../../../server/src/types';
 
 interface ArticleData {
@@ -20,14 +23,6 @@ interface AddArticleData {
   addArticle: Article;
 }
 
-interface AddArticleVars {
-  input: AddArticleInput;
-}
-
-interface ArticleVars {
-  id: Scalars['ID'];
-}
-
 const ARTICLE = gql`
   query getArticle($id: ID!) {
     article(id: $id) {
@@ -40,8 +35,14 @@ const ARTICLE = gql`
 `;
 
 const ARTICLES = gql`
-  query ListArticles {
-    articles {
+  query ListArticles(
+    $first: Int
+    $after: String
+  ) {
+    articles(
+      first: $first
+      after: $after
+    ) {
       nodes {
         id
         title
@@ -66,6 +67,13 @@ const ADD_ARTICLE = gql`
   }
 `;
 
-export const useArticle = (id: Scalars['ID']) => useQuery<ArticleData, ArticleVars>(ARTICLE, { variables: { id } });
-export const useArticles = () => useQuery<ArticlesData>(ARTICLES, { fetchPolicy: 'no-cache' });
-export const useAddArticle = () => useMutation<AddArticleData, AddArticleVars>(ADD_ARTICLE);
+export const useArticle = (
+  variables: QueryArticleArgs,
+) => useQuery<ArticleData, QueryArticleArgs>(ARTICLE, { variables });
+export const useArticles = (
+  variables?: QueryArticlesArgs,
+) => useQuery<ArticlesData, QueryArticlesArgs>(ARTICLES, { variables, fetchPolicy: 'no-cache' });
+export const useLazyArticles = (
+  variables?: QueryArticlesArgs,
+) => useLazyQuery<ArticlesData, QueryArticlesArgs>(ARTICLES, { variables, fetchPolicy: 'no-cache' });
+export const useAddArticle = () => useMutation<AddArticleData, MutationAddArticleArgs>(ADD_ARTICLE);

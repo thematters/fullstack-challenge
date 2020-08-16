@@ -7,7 +7,7 @@ import { useArticle } from '../gqls/article';
 
 export const Article: FC = () => {
   const { id } = useParams<{ id: string }>();
-  const { loading, error, data } = useArticle(id);
+  const { loading, error, data } = useArticle({ id });
 
   if (loading) return <p>Loading...</p>;
   if (error) return <Alert variant="danger">{error.message}</Alert>;

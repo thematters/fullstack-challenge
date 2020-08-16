@@ -38,10 +38,14 @@ const ARTICLES = gql`
   query ListArticles(
     $first: Int
     $after: String
+    $last: Int
+    $before: String
   ) {
     articles(
       first: $first
       after: $after
+      last: $last
+      before: $before
     ) {
       nodes {
         id
@@ -50,6 +54,7 @@ const ARTICLES = gql`
         createdAt
       }
       pageInfo {
+        hasPrev
         hasNext
         total
       }
@@ -63,6 +68,7 @@ const ADD_ARTICLE = gql`
       id
       title
       content
+      createdAt
     }
   }
 `;

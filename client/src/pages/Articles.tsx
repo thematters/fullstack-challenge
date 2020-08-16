@@ -18,11 +18,14 @@ export const Articles: React.FC = () => {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <Alert variant="danger">{error.message}</Alert>;
-  if (!data?.articles.pageInfo.total) return <p>No Articles</p>;
+
+  const { nodes = [], pageInfo } = data?.articles || {};
+
+  if (!pageInfo?.total) return <p>No Articles</p>;
 
   return (
     <>
-      {data?.articles.nodes.map(({ id, title }) => (
+      {nodes.map(({ id, title }) => (
         <ListGroup key={id}>
           <Link to={`articles/${id}`}>
             <ListGroup.Item action>
@@ -33,17 +36,37 @@ export const Articles: React.FC = () => {
       ))}
 
       <ButtonGroup className="mt-2">
-        <Button variant="light">Prev</Button>
         <Button
           variant="light"
           onClick={() => listArticles({
-            variables: { after: data?.articles.nodes[data?.articles.nodes.length - 1].id },
+            variables: {
+              last: SIZE, before: nodes[0].id,
+            },
           })}
-          disabled={!data?.articles.pageInfo.hasNext}
+          disabled={!pageInfo?.hasPrev}
+        >
+          Prev
+        </Button>
+        <Button
+          variant="light"
+          onClick={() => listArticles({
+            variables: {
+              first: SIZE, after: nodes[nodes.length - 1].id,
+            },
+          })}
+          disabled={!pageInfo?.hasNext}
         >
           Next
         </Button>
       </ButtonGroup>
+
+      <p className="text-right">
+        <small>
+          Page size:
+          {' '}
+          {SIZE}
+        </small>
+      </p>
     </>
   );
 };

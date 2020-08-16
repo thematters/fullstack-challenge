@@ -12,7 +12,7 @@ const INIT_STATE = {
 
 export const Submit: React.FC = () => {
   const history = useHistory();
-  const [addArticle, { error }] = useAddArticle();
+  const [addArticle, { loading, error }] = useAddArticle();
   const {
     values,
     handleChange,
@@ -55,7 +55,12 @@ export const Submit: React.FC = () => {
           onChange={handleChange}
         />
       </Form.Group>
-      <Button type="submit">Submit</Button>
+      <Button
+        type="submit"
+        disabled={loading}
+      >
+        {loading ? 'Loading...' : 'Submit'}
+      </Button>
     </Form>
   );
 };

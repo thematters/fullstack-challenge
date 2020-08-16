@@ -39,6 +39,7 @@ class ArticleStore {
 
     return this.store
       .iterator({
+        limit: -1,
         reverse: true,
         ...findFilter,
       })

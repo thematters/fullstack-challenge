@@ -24,6 +24,10 @@ npm run start:client
   - Apollo Server for GQL APIs
   - OrbitDB for datastore
 
+### Thanks you for your reviewing
+
+---
+
 # matters-fullstack-challenge
 
 Please write a simple website with the given features. The participant should clone this repo, and submit to a new branch with the participant's name.

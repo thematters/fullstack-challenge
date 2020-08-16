@@ -22,10 +22,14 @@ export type Query = {
   article?: Maybe<Article>;
 };
 
+
 export type QueryArticlesArgs = {
   first?: Maybe<Scalars['Int']>;
   after?: Maybe<Scalars['String']>;
+  last?: Maybe<Scalars['Int']>;
+  before?: Maybe<Scalars['String']>;
 };
+
 
 export type QueryArticleArgs = {
   id: Scalars['ID'];
@@ -36,6 +40,7 @@ export type Mutation = {
   _?: Maybe<Scalars['Boolean']>;
   addArticle: Article;
 };
+
 
 export type MutationAddArticleArgs = {
   input: AddArticleInput;
@@ -51,6 +56,7 @@ export type Article = Node & {
 
 export type PageInfo = {
   __typename?: 'PageInfo';
+  hasPrev: Scalars['Boolean'];
   hasNext: Scalars['Boolean'];
   total?: Maybe<Scalars['Int']>;
 };
@@ -70,3 +76,4 @@ export enum CacheControlScope {
   Public = 'PUBLIC',
   Private = 'PRIVATE'
 }
+

@@ -9,6 +9,7 @@ export const articleType = gql`
   }
 
   type PageInfo {
+    hasPrev: Boolean!
     hasNext: Boolean!
     total: Int
   }
@@ -22,6 +23,8 @@ export const articleType = gql`
     articles(
       first: Int
       after: String
+      last: Int
+      before: String
     ): ArticleConnection!
     article(id: ID!): Article
   }

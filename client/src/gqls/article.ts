@@ -70,10 +70,13 @@ const ADD_ARTICLE = gql`
 export const useArticle = (
   variables: QueryArticleArgs,
 ) => useQuery<ArticleData, QueryArticleArgs>(ARTICLE, { variables });
+
 export const useArticles = (
   variables?: QueryArticlesArgs,
 ) => useQuery<ArticlesData, QueryArticlesArgs>(ARTICLES, { variables, fetchPolicy: 'no-cache' });
+
 export const useLazyArticles = (
   variables?: QueryArticlesArgs,
 ) => useLazyQuery<ArticlesData, QueryArticlesArgs>(ARTICLES, { variables, fetchPolicy: 'no-cache' });
+
 export const useAddArticle = () => useMutation<AddArticleData, MutationAddArticleArgs>(ADD_ARTICLE);

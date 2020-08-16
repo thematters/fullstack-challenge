@@ -15,17 +15,27 @@ export const articles: IFieldResolver<
   null,
   null,
   QueryArticlesArgs
-> = async (_, { first = -1, after }): Promise<Query['articles']> => {
-  const nodes = await articleStore.find({ limit: first!, lt: after! });
+> = async (_, {
+  first = -1,
+  last = -1,
+  after,
+  before,
+}): Promise<Query['articles']> => {
+  const nodes = await articleStore.find({ limit: first! || last!, lt: after!, gt: before! });
   const hasNext = !!(await articleStore.find({
     limit: -1,
     lt: nodes[nodes.length - 1]?.id,
+  })).length;
+  const hasPrev = !!(await articleStore.find({
+    limit: -1,
+    gt: nodes[0]?.id,
   })).length;
   const total = await articleStore.count();
 
   return {
     nodes,
     pageInfo: {
+      hasPrev,
       hasNext,
       total,
     },

@@ -13,7 +13,7 @@ npm run start:server
 npm run start:client
 ```
 
-## About
+## Used stack
 
 - Frontend:
   - React
@@ -24,9 +24,9 @@ npm run start:client
   - Apollo Server for GQL APIs
   - OrbitDB for datastore
 
-### Thanks you for your reviewing
-
 ---
+
+Thank you for your review!
 
 # matters-fullstack-challenge
 

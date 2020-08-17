@@ -5,7 +5,7 @@
 
 import { ApolloServer } from 'apollo-server';
 
-import * as types from './types/';
+import * as types from './schema';
 import { resolvers } from './resolvers';
 
 require('dotenv').config();

@@ -6,15 +6,16 @@
 # install
 npm run install:all
 
-# start server at http://localhost:4000/
+# start server at http://localhost:4000
 npm run start:server
 
 # start client at http://localhost:8000
 npm run start:client
 ```
 
-## Used stack
+## Using stack
 
+- lang: TypeScript
 - Frontend:
   - React
   - React Router for routing

@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-vars */
+import { Config } from 'apollo-server';
 import FeedStore from 'orbit-db-feedstore';
-import { getDB } from '../../db';
+import { DataSource } from 'apollo-datasource';
 
+import { getDB } from '../../db';
 import { Article, AddArticleInput } from '../types';
 
 interface FindFilter {
@@ -13,8 +15,14 @@ interface FindFilter {
   reverse?: boolean;
 }
 
-class ArticleStore {
+class ArticleStore extends DataSource {
+  context: Config['context'];
+
   store: FeedStore<Article>;
+
+  initialize({ context }: Config) {
+    this.context = context;
+  }
 
   async loadStore() {
     if (this.store) return;

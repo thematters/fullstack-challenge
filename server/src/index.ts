@@ -3,18 +3,21 @@
  * make it live with features we requested. :)
  */
 
-import { ApolloServer } from 'apollo-server';
+// eslint-disable-next-line no-unused-vars
+import { ApolloServer, Config } from 'apollo-server';
 
 import * as types from './schema';
 import { resolvers } from './resolvers';
+import * as stores from './stores';
 
 require('dotenv').config();
 
 // init server
 const server = new ApolloServer({
   debug: true,
-  resolvers,
   typeDefs: Object.values(types),
+  resolvers,
+  dataSources: () => stores,
 });
 
 const port = process.env.SERVER_PORT || 4000;

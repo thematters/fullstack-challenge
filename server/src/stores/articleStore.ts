@@ -34,12 +34,12 @@ class ArticleStore extends DataSource {
   async findById(id: string) {
     await this.loadStore();
 
-    const { hash, payload } = this.store.get(id);
+    const { hash, payload } = this.store.get(id) || {};
 
-    return {
+    return hash && ({
       ...payload.value,
       id: hash,
-    };
+    });
   }
 
   async find(findFilter: FindFilter) {

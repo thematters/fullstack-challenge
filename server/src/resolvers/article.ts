@@ -1,4 +1,6 @@
 /* eslint-disable no-unused-vars */
+import { UserInputError } from 'apollo-server';
+
 import { Context } from '../context';
 import {
   QueryResolvers,
@@ -35,7 +37,13 @@ export const article: QueryResolvers<Context>['article'] = async (
   _,
   { id },
   { dataSources: { articleStore } },
-): Promise<ResolversTypes['Article']> => articleStore.findById(id);
+): Promise<ResolversTypes['Article']> => {
+  const node = await articleStore.findById(id);
+
+  if (!node) throw new UserInputError('Not Found');
+
+  return node;
+};
 
 export const addArticle: MutationResolvers<Context>['addArticle'] = async (
   _,

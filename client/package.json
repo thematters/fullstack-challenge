@@ -7,7 +7,8 @@
     "node": ">=12"
   },
   "scripts": {
-    "start": "parcel -p 8000 watch src/index.html --open"
+    "start": "parcel -p 8000 watch src/index.html --open",
+    "gen:type": "apollo client:codegen --target typescript"
   },
   "dependencies": {
     "@apollo/client": "^3.1.3",
@@ -34,6 +35,7 @@
     "@types/react-router-dom": "^5.1.5",
     "@typescript-eslint/eslint-plugin": "^3.9.0",
     "@typescript-eslint/parser": "^3.9.0",
+    "apollo": "^2.30.2",
     "eslint": "^7.7.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-import": "^2.22.0",

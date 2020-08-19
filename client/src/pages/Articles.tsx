@@ -1,27 +1,30 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
-  Alert, ListGroup, ButtonGroup, Button,
+  Alert,
+  ListGroup,
+  ButtonGroup,
+  Button,
 } from 'react-bootstrap';
 
 // eslint-disable-next-line no-unused-vars
 import { Link } from 'react-router-dom';
-import { useLazyArticles } from '../gqls/article';
+import { useArticles } from '../hooks';
 
-const SIZE = 5;
+const PAGE_SIZE = 5;
 
 export const Articles: React.FC = () => {
-  const [listArticles, { loading, error, data }] = useLazyArticles({ first: SIZE });
-
-  useEffect(() => {
-    listArticles();
-  }, []);
+  const {
+    loading,
+    error,
+    data,
+    fetchMore: listArticles,
+  } = useArticles({ first: PAGE_SIZE });
 
   if (loading) return <p>Loading...</p>;
   if (error) return <Alert variant="danger">{error.message}</Alert>;
 
   const { nodes = [], pageInfo } = data?.articles || {};
-
-  if (!pageInfo?.total) return <p>No Articles</p>;
+  if (!nodes.length) return <p>No Articles</p>;
 
   return (
     <>
@@ -40,7 +43,8 @@ export const Articles: React.FC = () => {
           variant="light"
           onClick={() => listArticles({
             variables: {
-              last: SIZE, before: nodes[0].id,
+              last: PAGE_SIZE,
+              before: nodes[0].id,
             },
           })}
           disabled={!pageInfo?.hasPrev}
@@ -51,7 +55,8 @@ export const Articles: React.FC = () => {
           variant="light"
           onClick={() => listArticles({
             variables: {
-              first: SIZE, after: nodes[nodes.length - 1].id,
+              first: PAGE_SIZE,
+              after: nodes[nodes.length - 1].id,
             },
           })}
           disabled={!pageInfo?.hasNext}
@@ -64,7 +69,7 @@ export const Articles: React.FC = () => {
         <small>
           Page size:
           {' '}
-          {SIZE}
+          {PAGE_SIZE}
         </small>
       </p>
     </>

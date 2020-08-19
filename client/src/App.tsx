@@ -4,8 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { Container } from 'react-bootstrap';
 
-import { MyNav } from './components/MyNav';
-
+import { MyNav } from './components';
 import { routes } from './routes';
 
 const client = new ApolloClient({

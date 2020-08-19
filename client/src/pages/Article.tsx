@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { useParams } from 'react-router-dom';
 import { Alert, Card } from 'react-bootstrap';
 
-import { useArticle } from '../gqls/article';
+import { useArticle } from '../hooks';
 
 export const Article: FC = () => {
   const { id } = useParams<{ id: string }>();

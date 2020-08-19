@@ -1,13 +1,19 @@
-/* eslint-disable import/prefer-default-export */
 import { useState } from 'react';
 
-export const useForm = <S extends {}>(
-  initValues: S,
-  onSubmit?: (values: S) => void,
-) => {
+interface UseFormOptions<TValues> {
+  initValues: TValues,
+  onSubmit?: (values: TValues) => void,
+}
+
+export const useForm = <TValues extends {}>({
+  initValues,
+  onSubmit,
+}: UseFormOptions<TValues>) => {
   const [values, setValues] = useState(initValues);
 
-  const handleChange = ({ target: { name, value } }: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = ({
+    target: { name, value },
+  }: React.ChangeEvent<HTMLInputElement>) => {
     setValues((preValues) => ({
       ...preValues,
       [name]: value,
@@ -21,3 +27,5 @@ export const useForm = <S extends {}>(
 
   return { values, handleChange, handleSubmit };
 };
+
+export default useForm;

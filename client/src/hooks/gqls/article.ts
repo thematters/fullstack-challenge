@@ -1,7 +1,5 @@
 /* eslint-disable no-unused-vars */
-import {
-  useQuery, gql, useMutation, useLazyQuery,
-} from '@apollo/client';
+import { useQuery, gql, useMutation } from '@apollo/client';
 
 import {
   Article,
@@ -9,7 +7,7 @@ import {
   QueryArticlesArgs,
   ArticleConnection,
   MutationAddArticleArgs,
-} from '../../../server/src/types';
+} from '../../../../server/src/types';
 
 interface ArticleData {
   article: Article;
@@ -80,9 +78,5 @@ export const useArticle = (
 export const useArticles = (
   variables?: QueryArticlesArgs,
 ) => useQuery<ArticlesData, QueryArticlesArgs>(ARTICLES, { variables, fetchPolicy: 'no-cache' });
-
-export const useLazyArticles = (
-  variables?: QueryArticlesArgs,
-) => useLazyQuery<ArticlesData, QueryArticlesArgs>(ARTICLES, { variables, fetchPolicy: 'no-cache' });
 
 export const useAddArticle = () => useMutation<AddArticleData, MutationAddArticleArgs>(ADD_ARTICLE);

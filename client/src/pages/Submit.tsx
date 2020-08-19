@@ -2,8 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Form, Button, Alert } from 'react-bootstrap';
 
-import { useAddArticle } from '../gqls/article';
-import { useForm } from '../hooks';
+import { useForm, useAddArticle } from '../hooks';
 
 const INIT_STATE = {
   title: '',
@@ -17,9 +16,12 @@ export const Submit: React.FC = () => {
     values,
     handleChange,
     handleSubmit,
-  } = useForm(INIT_STATE, async (input) => {
-    await addArticle({ variables: { input } });
-    history.push('/');
+  } = useForm({
+    initValues: INIT_STATE,
+    onSubmit: async (input) => {
+      await addArticle({ variables: { input } });
+      history.push('/');
+    },
   });
 
   if (error) {

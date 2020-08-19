@@ -1,9 +1,9 @@
 // eslint-disable-next-line no-unused-vars
-import { IResolvers } from 'apollo-server';
+import { Resolvers } from '../generated/graphql';
 
 import { article, articles, addArticle } from './article';
 
-export const resolvers: IResolvers = {
+export const resolvers: Resolvers = {
   Query: {
     article,
     articles,

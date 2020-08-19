@@ -1,4 +1,8 @@
-schema: http://localhost:4000/graphql
+overwrite: true
+schema: "http://localhost:4000"
+documents: null
 generates:
-  src/types.ts:
-    - typescript
+  src/generated/graphql.ts:
+    plugins:
+      - "typescript"
+      - "typescript-resolvers"

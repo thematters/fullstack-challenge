@@ -4,7 +4,7 @@ import FeedStore from 'orbit-db-feedstore';
 import { DataSource } from 'apollo-datasource';
 
 import { getDB } from '../../db';
-import { Article, AddArticleInput } from '../types';
+import { Article, AddArticleInput } from '../generated/graphql';
 
 interface FindFilter {
   gt?: string;

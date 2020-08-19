@@ -4,7 +4,7 @@
  */
 
 // eslint-disable-next-line no-unused-vars
-import { ApolloServer, Config } from 'apollo-server';
+import { ApolloServer } from 'apollo-server';
 
 import * as types from './schema';
 import { resolvers } from './resolvers';
@@ -16,6 +16,7 @@ require('dotenv').config();
 const server = new ApolloServer({
   debug: true,
   typeDefs: Object.values(types),
+  // @ts-ignore
   resolvers,
   dataSources: () => stores,
 });

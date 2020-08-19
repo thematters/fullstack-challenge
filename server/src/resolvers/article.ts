@@ -1,21 +1,12 @@
 /* eslint-disable no-unused-vars */
-import { IFieldResolver } from 'apollo-server';
-
 import { Context } from '../context';
-
 import {
-  MutationAddArticleArgs,
-  Mutation,
-  Query,
-  QueryArticleArgs,
-  QueryArticlesArgs,
-} from '../types';
+  QueryResolvers,
+  MutationResolvers,
+  ResolversTypes,
+} from '../generated/graphql';
 
-export const articles: IFieldResolver<
-  null,
-  Context,
-  QueryArticlesArgs
-> = async (
+export const articles: QueryResolvers<Context>['articles'] = async (
   _,
   {
     first = -1,
@@ -24,7 +15,7 @@ export const articles: IFieldResolver<
     before,
   },
   { dataSources: { articleStore } },
-): Promise<Query['articles']> => {
+): Promise<ResolversTypes['ArticleConnection']> => {
   const nodes = await articleStore.find({ limit: first! || last!, lt: after!, gt: before! });
   const hasPrev = !!(await articleStore.find({ gt: nodes[0]?.id })).length;
   const hasNext = !!(await articleStore.find({ lt: nodes[nodes.length - 1]?.id })).length;
@@ -40,25 +31,17 @@ export const articles: IFieldResolver<
   };
 };
 
-export const article: IFieldResolver<
-  null,
-  Context,
-  QueryArticleArgs
-> = async (
+export const article: QueryResolvers<Context>['article'] = async (
   _,
   { id },
   { dataSources: { articleStore } },
-): Promise<Query['article']> => articleStore.findById(id);
+): Promise<ResolversTypes['Article']> => articleStore.findById(id);
 
-export const addArticle: IFieldResolver<
-  null,
-  Context,
-  MutationAddArticleArgs
-> = async (
+export const addArticle: MutationResolvers<Context>['addArticle'] = async (
   _,
   { input },
   { dataSources: { articleStore } },
-): Promise<Mutation['addArticle']> => {
+): Promise<ResolversTypes['Article']> => {
   const hash = await articleStore.create(input);
 
   return {

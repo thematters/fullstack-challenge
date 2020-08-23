@@ -3,7 +3,7 @@
 ## Getting started
 
 ```sh
-# install
+# install dep
 npm run install:all
 
 # start server at http://localhost:4000
@@ -16,12 +16,12 @@ npm run start:client
 ## Using stack
 
 - lang: TypeScript
-- Frontend:
+- frontend:
   - React
   - React Router for routing
   - React Bootstrap for basic styling
   - Apollo Client for data fetching
-- Backend:
+- backend:
   - Apollo Server for GQL APIs
   - OrbitDB for datastore
 

@@ -7,12 +7,14 @@ import {
 } from 'react-bootstrap';
 
 // eslint-disable-next-line no-unused-vars
-import { Link } from 'react-router-dom';
+import { Link, RouteComponentProps } from 'react-router-dom';
 import { useArticles } from '../hooks';
+
+interface ArticlesProps extends RouteComponentProps {}
 
 const PAGE_SIZE = 5;
 
-export const Articles: React.FC = () => {
+export const Articles: React.FC<ArticlesProps> = () => {
   const {
     loading,
     error,

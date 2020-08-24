@@ -1,28 +1,12 @@
 /* eslint-disable no-unused-vars */
 import { useQuery, gql, useMutation } from '@apollo/client';
 
-import {
-  Article,
-  QueryArticleArgs,
-  QueryArticlesArgs,
-  ArticleConnection,
-  MutationAddArticleArgs,
-} from '../../../../server/src/types';
-
-interface ArticleData {
-  article: Article;
-}
-
-interface ArticlesData {
-  articles: ArticleConnection;
-}
-
-interface AddArticleData {
-  addArticle: Article;
-}
+import { GetArticle, GetArticleVariables } from './__generated__/getArticle';
+import { ListArticles, ListArticlesVariables } from './__generated__/ListArticles';
+import { AddArticle, AddArticleVariables } from './__generated__/AddArticle';
 
 const ARTICLE = gql`
-  query getArticle($id: ID!) {
+  query GetArticle($id: ID!) {
     article(id: $id) {
       id
       title
@@ -72,11 +56,11 @@ const ADD_ARTICLE = gql`
 `;
 
 export const useArticle = (
-  variables: QueryArticleArgs,
-) => useQuery<ArticleData, QueryArticleArgs>(ARTICLE, { variables });
+  variables: GetArticleVariables,
+) => useQuery<GetArticle, GetArticleVariables>(ARTICLE, { variables });
 
 export const useArticles = (
-  variables?: QueryArticlesArgs,
-) => useQuery<ArticlesData, QueryArticlesArgs>(ARTICLES, { variables, fetchPolicy: 'no-cache' });
+  variables?: ListArticlesVariables,
+) => useQuery<ListArticles, ListArticlesVariables>(ARTICLES, { variables, fetchPolicy: 'no-cache' });
 
-export const useAddArticle = () => useMutation<AddArticleData, MutationAddArticleArgs>(ADD_ARTICLE);
+export const useAddArticle = () => useMutation<AddArticle, AddArticleVariables>(ADD_ARTICLE);

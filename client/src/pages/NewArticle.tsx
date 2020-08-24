@@ -4,12 +4,12 @@ import { Form, Button, Alert } from 'react-bootstrap';
 
 import { useForm, useAddArticle } from '../hooks';
 
-const INIT_STATE = {
+const INIT_VALUES = {
   title: '',
   content: '',
 };
 
-export const Submit: React.FC = () => {
+export const NewArticle: React.FC = () => {
   const history = useHistory();
   const [addArticle, { loading, error }] = useAddArticle();
   const {
@@ -17,7 +17,7 @@ export const Submit: React.FC = () => {
     handleChange,
     handleSubmit,
   } = useForm({
-    initValues: INIT_STATE,
+    initValues: INIT_VALUES,
     onSubmit: async (input) => {
       await addArticle({ variables: { input } });
       history.push('/');
@@ -67,4 +67,4 @@ export const Submit: React.FC = () => {
   );
 };
 
-export default Submit;
+export default NewArticle;

@@ -1,11 +1,9 @@
 import React from 'react';
-import { renderRoutes } from 'react-router-config';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-import { Container } from 'react-bootstrap';
 
 import { MyNav } from './components';
-import { routes } from './routes';
+import { Pages } from './pages';
 
 const client = new ApolloClient({
   uri: process.env.GQL_URL || 'http://localhost:4000',
@@ -17,9 +15,7 @@ export const App: React.FC = () => (
     <Router>
       <MyNav />
 
-      <Container>
-        {renderRoutes(routes)}
-      </Container>
+      <Pages />
     </Router>
   </ApolloProvider>
 );

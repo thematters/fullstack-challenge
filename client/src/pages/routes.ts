@@ -1,7 +1,9 @@
 // eslint-disable-next-line no-unused-vars
 import { RouteConfig } from 'react-router-config';
 
-import { Articles, Article, Submit } from './pages';
+import { Article } from './Article';
+import { Articles } from './Articles';
+import { NewArticle } from './NewArticle';
 
 export const routes: RouteConfig[] = [
   {
@@ -12,7 +14,7 @@ export const routes: RouteConfig[] = [
   {
     exact: true,
     path: '/articles/new',
-    component: Submit,
+    component: NewArticle,
   },
   {
     path: '/articles/:id',

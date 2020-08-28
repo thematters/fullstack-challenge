@@ -13,5 +13,6 @@ export const getDB = async () => {
   const ipfs = await IPFS.create({ repo: './ipfs-repo' });
 
   db = await OrbitDB.createInstance(ipfs);
+
   return db;
 };

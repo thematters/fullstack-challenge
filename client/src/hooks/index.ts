@@ -1,2 +1,2 @@
-export * from './gqls';
+export * from './graphql';
 export * from './use-form';

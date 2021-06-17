@@ -1,28 +1,11 @@
-# matters-fullstack-challenge
+# Full-stack Engineer Challenge
 
-Please write a simple website with the given features. The participant should clone this repo, and submit to a new branch with the participant's name.
+The challenge consists of two parts:
+* [Code Challenge](./CodeChallenge.md)
+* [Written Challenge](./WrittenChallenge.md)
 
----
+Please clone this repo and submit your work in a seperate branch with your name as the branch name.
 
-### Required features
+The challenges are designed to demonstrate the applicant's way of thinking and personal passions. All challenges are open ended, so please feel free to frame the questions as you see fit, or answer them in any way that you think interesting and revealing.
 
-1. UI that can render list of stored articles.
-2. UI for user to submit an article with title and text.
-3. After the user submit, store the article and display notification stating the reuqest is successful or failed.
-
-### Bouns features
-
-1. Generate (or redirect to) an URL for the article.
-2. Pagnation of article list.
-
-### Recommended stack:
-
-- language: TypeScript
-- frontend: React
-- data fetching: GraphQL
-- server: Node.js
-- storage: IPFS (static), OrbitDB (dynamic)
-
-In order to make the process shorter, we've provided template and config exmaples in `client` and `server`, and feel free to refactor them and use your favorite tools and packages.
-
-Note: although using IPFS/OrbitDB on frontend and omit server would be easier, please treat IPFS as an external service, and connect to it via a data fetching layer.
+Enjoy and good luck!

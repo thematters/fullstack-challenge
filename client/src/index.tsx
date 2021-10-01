@@ -6,12 +6,11 @@
 
 import React from 'react'
 import { render } from 'react-dom'
+import Router from './pages'
 
 const App = (): React.ReactElement => {
   return (
-    <section>
-      Hello, world! :)
-    </section>
+    <Router />
   )
 }
 

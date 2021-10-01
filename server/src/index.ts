@@ -21,8 +21,8 @@ const server = new ApolloServer({
   },
   typeDefs: gql`
     type Article {
-      title: string
-      content: string
+      title: String
+      content: String
     }
 
     type Query {

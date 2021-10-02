@@ -6,7 +6,7 @@ const LeftLink = styled.a`
   padding: 8px;
   background: white;
   cursor: pointer;
-  color: blue;
+  color: #72a4d4;
   &::after {
     content: '<';
     display: block;
@@ -24,7 +24,7 @@ const RightLink = styled.a`
     content: '>';
     display: block;
   }
-  color: blue;
+  color: #72a4d4;
   &:hover {
     color: lightblue;
   }
@@ -34,7 +34,7 @@ const PageLink = styled.a`
   text-align: center;
   background: white;
   cursor: pointer;
-  color: blue;
+  color: #72a4d4;
   &:hover {
     color: lightblue;
   }
@@ -45,7 +45,7 @@ const AbbreviationBlock = styled.a`
   background: white;
 `
 
-interface Props {
+export interface Props {
   currentPage: number,
   finalPage: number,
   getHref?: (page: number) => string
@@ -85,7 +85,7 @@ const Pagination = ({ currentPage, finalPage, getHref, onChange }: Props) => {
               <PageLink
                 key={page + index}
                 onClick={() => onChange(page)}
-                css={currentPage === page && css`color: red;`}
+                css={currentPage === page && css`color: lightsalmon;`}
                 {...(getHref ? { href: getHref(page) } : {})}
               >
                 {page}

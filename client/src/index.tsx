@@ -6,6 +6,7 @@
 
 import React from 'react'
 import { render } from 'react-dom'
+import 'normalize.css'
 import Router from './pages'
 
 const App = (): React.ReactElement => {

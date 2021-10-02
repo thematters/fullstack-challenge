@@ -73,7 +73,10 @@ const Pagination = ({ currentPage, finalPage, getHref, onChange }: Props) => {
     <div css={{ display: 'inline-flex' }}>
       {needAbbreviation && (pages.length !== 5 || pages[1] === '...') && (
         <LeftLink
-          onClick={() => onChange(currentPage - 1)}
+          onClick={(event) => {
+            event.preventDefault()
+            onChange(currentPage - 1)
+          }}
           {...(getHref ? { href: getHref(currentPage - 1) } : {})}
         />
       )}
@@ -87,7 +90,10 @@ const Pagination = ({ currentPage, finalPage, getHref, onChange }: Props) => {
             return (
               <PageLink
                 key={page + index}
-                onClick={() => onChange(page)}
+                onClick={(event) => {
+                  event.preventDefault()
+                  onChange(page)
+                }}
                 css={currentPage === page && css`color: lightsalmon;`}
                 {...(getHref ? { href: getHref(page) } : {})}
               >
@@ -99,7 +105,10 @@ const Pagination = ({ currentPage, finalPage, getHref, onChange }: Props) => {
       }
       {needAbbreviation && (pages.length !== 5 || pages[1] !== '...') && (
         <RightLink
-          onClick={() => onChange(currentPage + 1)}
+          onClick={(event) => {
+            event.preventDefault()
+            onChange(currentPage + 1)
+          }}
           {...(getHref ? { href: getHref(currentPage + 1) } : {})}
         />
       )}

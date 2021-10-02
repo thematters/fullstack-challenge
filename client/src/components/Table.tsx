@@ -7,7 +7,7 @@ export interface Props<T> {
     title: React.ReactNode,
     headCSS?: Interpolation<Theme>,
     cellCSS?: Interpolation<Theme>,
-    renderCell?: (value: any, record: object) => React.ReactNode,
+    renderCell?: (value: any, record: T) => React.ReactNode,
   }>,
   rowKey: ((record: object) => string) | keyof T,
   data: Array<T>,
@@ -47,7 +47,7 @@ export default function Table<T extends object>({ columns, rowKey, data, onClick
                 return (
                   <td
                     key={`row-${key}-${index}`}
-                    css={[{ padding: '8px', color: '#898989', }, cellCSS]}
+                    css={[{ padding: '8px', color: '#222', }, cellCSS]}
                   >
                     {typeof renderCell === 'function' ? renderCell(value, row) : value}
                   </td>

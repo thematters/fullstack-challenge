@@ -68,11 +68,13 @@ const HomePage = () => (
           { id: 8, title: 'Title 8', createdTimestamp: Date.now() },
           { id: 9, title: 'Title 9', createdTimestamp: Date.now() },
           { id: 10, title: 'Title 10', createdTimestamp: Date.now() }
-        ]
+        ],
+        onClickRow: (data) => { console.log(data) }
       }}
       paginationProps={{
         currentPage: 1,
         finalPage: 100,
+        getHref: (page) => `/article/${page}`,
         onChange: (page) => {}
       }}
     />

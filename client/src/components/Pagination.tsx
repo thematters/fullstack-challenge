@@ -3,6 +3,7 @@ import { css, jsx } from '@emotion/react'
 import styled from '@emotion/styled'
 
 const LeftLink = styled.a`
+  text-decoration: none;
   padding: 8px;
   background: white;
   cursor: pointer;
@@ -16,6 +17,7 @@ const LeftLink = styled.a`
   }
 `
 const RightLink = styled.a`
+  text-decoration: none;
   padding: 8px;
   text-align: center;
   background: white;
@@ -30,6 +32,7 @@ const RightLink = styled.a`
   }
 `
 const PageLink = styled.a`
+  text-decoration: none;
   padding: 8px;
   text-align: center;
   background: white;
@@ -39,7 +42,7 @@ const PageLink = styled.a`
     color: lightblue;
   }
 `
-const AbbreviationBlock = styled.a`
+const AbbreviationBlock = styled.span`
   padding: 8px;
   text-align: center;
   background: white;

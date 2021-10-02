@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Interpolation, Theme, css } from '@emotion/react'
+import { jsx } from '@emotion/react'
 import Table, { Props as TableProps } from './Table'
 import Pagination, { Props as PaginationProps } from './Pagination'
 

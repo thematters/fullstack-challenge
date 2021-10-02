@@ -11,9 +11,10 @@ export interface Props<T> {
   }>,
   rowKey: ((record: object) => string) | keyof T,
   data: Array<T>,
+  onClickRow?: (record: object) => void
 }
 
-export default function Table<T extends object>({ columns, rowKey, data }: Props<T>) {
+export default function Table<T extends object>({ columns, rowKey, data, onClickRow }: Props<T>) {
   return (
     <table css={{ width: '100%' }}>
       <thead>
@@ -36,8 +37,10 @@ export default function Table<T extends object>({ columns, rowKey, data }: Props
               key={`row-${key}`}
               css={{
                 background: index % 2 === 1 ? '#eee' : 'none',
-                '&:hover': { background: '#efefef' }
+                cursor: onClickRow ? 'pointer' : 'initial',
+                '&:hover': { background: '#ddd' }
               }}
+              onClick={() => onClickRow && onClickRow(row)}
             >
               {columns.map(({ referencedDataPropertyName, cellCSS, renderCell }, index) => {
                 const value = row[referencedDataPropertyName]

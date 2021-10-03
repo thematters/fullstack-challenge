@@ -11,10 +11,10 @@ export default function Index(): ReactElement {
     <Router>
       <Suspense fallback={<Loading />}>
         <Switch>
-          <Route exact path="/create" component={ArticleCreatePage} />
-          <Route exact path="/edit/:id" component={ArticleEditPage} />
-          <Route exact path="/:page" component={HomePage} />
-          <Route exact path="/" component={HomePage} />
+          <Route exact path="/create" render={() => <ArticleCreatePage />} />
+          <Route exact path="/edit/:id" render={() => <ArticleEditPage />} />
+          <Route exact path="/:page" render={() => <HomePage />} />
+          <Route exact path="/" render={() => <HomePage />} />
           <Route render={() => <Redirect to="/" />} />
         </Switch>
       </Suspense>

@@ -15,7 +15,7 @@
     "sourceMap": true,
     "strict": true,
     "resolveJsonModule": true,
-    "target": "esnext",
+    "target": "es5",
     "baseUrl": "./",
     "paths": {
       "~/*": ["./*"]

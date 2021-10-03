@@ -1,8 +1,3 @@
-/**
- * This is an incomplete script of apollo server. Please
- * make it live with features we requested. :)
- *
- */
 
 require('dotenv').config()
 
@@ -14,7 +9,7 @@ import typeDefs from './schemas'
 // init server
 const server = new ApolloServer({
   cors: {
-    origin: [],
+    origin: "*",
   },
   debug: true,
   dataSources: () => ({ }),
@@ -22,6 +17,12 @@ const server = new ApolloServer({
     typeDefs,
     resolvers,
   }),
+  // formatResponse: (resp) => {
+  //   if (Math.floor(Math.random() * 2))
+  //     throw 'mock error';
+    
+  //   return resp  
+  // }
 })
 
 // run server up

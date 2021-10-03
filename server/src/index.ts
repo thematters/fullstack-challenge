@@ -6,32 +6,25 @@
 
 require('dotenv').config()
 
-import { ApolloServer, gql } from 'apollo-server'
+import { ApolloServer } from 'apollo-server'
+import { makeExecutableSchema } from 'graphql-tools';
+import resolvers from './resolvers'
+import typeDefs from './schemas'
 
 // init server
 const server = new ApolloServer({
   cors: {
     origin: [],
   },
-  dataSources: () => ({ }),
   debug: true,
-  resolvers: {
-    Query: {},
-    Mutation: {},
-  },
-  typeDefs: gql`
-    type Article {
-      title: String
-      content: String
-    }
-
-    type Query {
-      articles: [Article]
-    }
-  `,
+  dataSources: () => ({ }),
+  schema: makeExecutableSchema({
+    typeDefs,
+    resolvers,
+  }),
 })
 
 // run server up
 server
-  .listen({ port: '' })
+  .listen({ port: process.env.SERVER_PORT })
   .then(({ url }) => console.log(`Server is ready at ${url}`))

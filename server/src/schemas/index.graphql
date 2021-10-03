@@ -1,0 +1,32 @@
+type Article {
+  id: Int!
+  title: String!
+  content: String!
+  createdTimestamp: Int!
+}
+
+union PaginationContent = Article
+type PaginationResult {
+  list: [PaginationContent!]!
+  total: Int!
+}
+
+input PaginationInput {
+  page: Int!
+  pageSize: Int!
+}
+
+input ArticleInput {
+  title: String!
+  content: String!
+}
+
+type Query {
+  articles(pagination: PaginationInput!): PaginationResult
+  article(id: Int!): Article
+}
+
+type Mutation {
+  createArticle(data: ArticleInput!): Article
+  updateArticle(id: Int!, data: ArticleInput!): Article
+}

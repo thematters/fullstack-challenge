@@ -6,7 +6,9 @@
     "node": ">=12"
   },
   "scripts": {
-    "start": "ts-node ./src/index.ts"
+    "start": "ts-node ./src/index.ts",
+    "dev": "nodemon --watch src -e ts,json --exec 'node --inspect -r ts-node/register ./src/index.ts'",
+    "gen": "graphql-schema-typescript generate-ts ./src/schemas --output ./src/definitions/schemas.d.ts"
   },
   "dependencies": {
     "apollo": "^2.30.2",
@@ -24,6 +26,7 @@
     "@types/dotenv": "^8.2.0",
     "@types/graphql": "^14.5.0",
     "@types/node": "^14.0.27",
+    "nodemon": "^2.0.13",
     "prettier": "^2.0.5",
     "ts-node": "^10.2.1",
     "tslint": "^6.1.3"

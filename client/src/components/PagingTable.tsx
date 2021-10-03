@@ -9,7 +9,7 @@ import React from 'react'
 interface Props<T> {
   tableProp: TableProps<T>,
   paginationProps: PaginationProps,
-  isLoading: boolean,
+  isLoading?: boolean,
 }
 
 export default function PagingTable<T extends object>({ tableProp, paginationProps, isLoading }: Props<T>) {

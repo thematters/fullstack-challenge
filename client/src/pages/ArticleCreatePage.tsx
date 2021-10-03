@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/react'
-import React, { useState, useCallback } from 'react'
+import React, { useCallback } from 'react'
 import { Helmet } from 'react-helmet'
 import Back from '../components/Back'
 import ArticleForm from '../components/ArticleForm'

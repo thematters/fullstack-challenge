@@ -44,10 +44,14 @@ const ArticleEditPage = () => {
     loading: updateLoading,
     error: updateError
   }] = useMutation(UPDATE_ARTICLE, {
-    refetchQueries: [ GET_ARTICLE ],
+    notifyOnNetworkStatusChange: true,
+    refetchQueries: [
+      GET_ARTICLE,
+    ],
   });
   const onSubmit = useCallback((value) => {
     updateArticle({
+      notifyOnNetworkStatusChange: true,
       variables: {
         id: value.id,
         title: value.title,
@@ -98,9 +102,9 @@ const ArticleEditPage = () => {
             message={queryError?.message}
           />
         )}
-        {(!queryError && data) && (
+        {(!queryError) && (
           <ArticleForm
-            value={data.article}
+            value={data?.article ?? {}}
             isLoading={queryLoading || updateLoading}
             onSubmit={onSubmit}
           />

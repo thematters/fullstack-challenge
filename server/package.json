@@ -7,18 +7,20 @@
   },
   "scripts": {
     "start": "ts-node ./src/index.ts",
-    "dev": "nodemon --watch src -e ts,json --exec 'node --inspect -r ts-node/register ./src/index.ts'",
-    "gen": "graphql-schema-typescript generate-ts ./src/schemas --output ./src/definitions/schemas.d.ts"
+    "dev": "node --inspect -r ts-node/register ./src/index.ts",
+    "dev:monitor": "nodemon --watch src -e ts,json --exec 'node --inspect -r ts-node/register ./src/index.ts'",
+    "gen": "graphql-schema-typescript generate-ts ./src/schemas --output ./src/definitions/schemas.d.ts --asyncResult=always"
   },
   "dependencies": {
     "apollo": "^2.30.2",
+    "apollo-datasource": "^3.1.0",
     "apollo-server": "^2.16.1",
     "dotenv": "^8.2.0",
     "graphql": "^15.3.0",
     "graphql-schema-typescript": "^1.3.2",
     "graphql-tools": "^6.0.16",
-    "ipfs-http-client": "^45.0.0",
-    "orbit-db": "^0.24.2",
+    "ipfs": "0.59.0",
+    "orbit-db": "^0.27.1",
     "pg": "^8.3.0",
     "typescript": "^3.9.7"
   },
@@ -26,6 +28,7 @@
     "@types/dotenv": "^8.2.0",
     "@types/graphql": "^14.5.0",
     "@types/node": "^14.0.27",
+    "@types/orbit-db": "git+https://github.com/orbitdb/orbit-db-types.git",
     "nodemon": "^2.0.13",
     "prettier": "^2.0.5",
     "ts-node": "^10.2.1",

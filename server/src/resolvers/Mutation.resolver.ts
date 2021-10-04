@@ -1,22 +1,21 @@
 import { GraphQLResolveInfo } from 'graphql';
 import {
-  GQLArticle,
   MutationToCreateArticleArgs,
   MutationToUpdateArticleArgs,
   GQLMutationTypeResolver,
   MutationToCreateArticleResolver,
   MutationToUpdateArticleResolver,
 } from '../definitions/schemas';
-import MockArticle from '../mock/article.json';
+import { ApolloContext } from '../definitions/context';
 
 const createArticle: MutationToCreateArticleResolver =
-  (_, args: MutationToCreateArticleArgs, context: any, info: GraphQLResolveInfo) => {
-    return MockArticle as GQLArticle;
+  async (_, args: MutationToCreateArticleArgs, context: ApolloContext, info: GraphQLResolveInfo) => {
+    return await context.dataSources.articleDatabaseAPI.create(args.data);
   };
 
 const updateArticle: MutationToUpdateArticleResolver =
-  (_, args: MutationToUpdateArticleArgs, context: any, info: GraphQLResolveInfo) => {
-    return MockArticle as GQLArticle;
+  async (_, args: MutationToUpdateArticleArgs, context: ApolloContext, info: GraphQLResolveInfo) => {
+    return await context.dataSources.articleDatabaseAPI.update(args.id, args.data)
   };
 
 const resolver: GQLMutationTypeResolver = {

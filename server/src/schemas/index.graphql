@@ -2,7 +2,7 @@ type Article {
   id: String!
   title: String!
   content: String!
-  createdTimestamp: Int!
+  createdTimestamp: Float!
 }
 
 union PaginationContent = Article
@@ -12,6 +12,8 @@ type PaginationResult {
 }
 
 input PaginationInput {
+  afterHash: String
+  beforeHash: String
   page: Int!
   pageSize: Int!
 }

@@ -13,15 +13,15 @@ const id: ArticleToIdResolver =
     return parent.id as string;
   };
 const title: ArticleToTitleResolver =
-  (parent: GQLArticle, args: {}, context: any, info: GraphQLResolveInfo) => {
+  async (parent: GQLArticle, args: {}, context: any, info: GraphQLResolveInfo) => {
     return parent.title as string;
   };
 const content: ArticleToContentResolver =
-  (parent: GQLArticle, args: {}, context: any, info: GraphQLResolveInfo) => {
+  async (parent: GQLArticle, args: {}, context: any, info: GraphQLResolveInfo) => {
     return parent.content as string;
   };
 const createdTimestamp: ArticleToCreatedTimestampResolver =
-  (parent: GQLArticle, args: {}, context: any, info: GraphQLResolveInfo) => {
+  async (parent: GQLArticle, args: {}, context: any, info: GraphQLResolveInfo) => {
     return parent.createdTimestamp as number;
   };
 

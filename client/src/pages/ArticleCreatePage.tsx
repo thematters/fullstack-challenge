@@ -17,11 +17,7 @@ const CREATE_ARTICLE = gql`
 const ArticleCreatePage = () => {
   const history = useHistory();
   const context = useContext(NotificationContext);
-  const [createArticle, { data, loading, error }] = useMutation(CREATE_ARTICLE, {
-    refetchQueries: [
-      'GET_ARTICLE_PAGE'
-    ],
-  });
+  const [createArticle, { data, loading, error }] = useMutation(CREATE_ARTICLE);
   const onSubmit = useCallback((value) => {
     createArticle({
       variables: {

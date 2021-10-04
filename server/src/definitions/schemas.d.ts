@@ -35,6 +35,8 @@ export interface GQLPaginationResult {
 }
 
 export interface GQLPaginationInput {
+  afterHash?: string;
+  beforeHash?: string;
   page: number;
   pageSize: number;
 }
@@ -82,19 +84,19 @@ export interface GQLArticleTypeResolver<TParent = any> {
 }
 
 export interface ArticleToIdResolver<TParent = any, TResult = any> {
-  (parent: TParent, args: {}, context: any, info: GraphQLResolveInfo): TResult;
+  (parent: TParent, args: {}, context: any, info: GraphQLResolveInfo): Promise<TResult>;
 }
 
 export interface ArticleToTitleResolver<TParent = any, TResult = any> {
-  (parent: TParent, args: {}, context: any, info: GraphQLResolveInfo): TResult;
+  (parent: TParent, args: {}, context: any, info: GraphQLResolveInfo): Promise<TResult>;
 }
 
 export interface ArticleToContentResolver<TParent = any, TResult = any> {
-  (parent: TParent, args: {}, context: any, info: GraphQLResolveInfo): TResult;
+  (parent: TParent, args: {}, context: any, info: GraphQLResolveInfo): Promise<TResult>;
 }
 
 export interface ArticleToCreatedTimestampResolver<TParent = any, TResult = any> {
-  (parent: TParent, args: {}, context: any, info: GraphQLResolveInfo): TResult;
+  (parent: TParent, args: {}, context: any, info: GraphQLResolveInfo): Promise<TResult>;
 }
 
 export interface GQLPaginationContentTypeResolver<TParent = any> {
@@ -106,11 +108,11 @@ export interface GQLPaginationResultTypeResolver<TParent = any> {
 }
 
 export interface PaginationResultToListResolver<TParent = any, TResult = any> {
-  (parent: TParent, args: {}, context: any, info: GraphQLResolveInfo): TResult;
+  (parent: TParent, args: {}, context: any, info: GraphQLResolveInfo): Promise<TResult>;
 }
 
 export interface PaginationResultToTotalResolver<TParent = any, TResult = any> {
-  (parent: TParent, args: {}, context: any, info: GraphQLResolveInfo): TResult;
+  (parent: TParent, args: {}, context: any, info: GraphQLResolveInfo): Promise<TResult>;
 }
 
 export interface GQLQueryTypeResolver<TParent = any> {
@@ -122,14 +124,14 @@ export interface QueryToArticlesArgs {
   pagination: GQLPaginationInput;
 }
 export interface QueryToArticlesResolver<TParent = any, TResult = any> {
-  (parent: TParent, args: QueryToArticlesArgs, context: any, info: GraphQLResolveInfo): TResult;
+  (parent: TParent, args: QueryToArticlesArgs, context: any, info: GraphQLResolveInfo): Promise<TResult>;
 }
 
 export interface QueryToArticleArgs {
   id: string;
 }
 export interface QueryToArticleResolver<TParent = any, TResult = any> {
-  (parent: TParent, args: QueryToArticleArgs, context: any, info: GraphQLResolveInfo): TResult;
+  (parent: TParent, args: QueryToArticleArgs, context: any, info: GraphQLResolveInfo): Promise<TResult>;
 }
 
 export interface GQLMutationTypeResolver<TParent = any> {
@@ -141,7 +143,7 @@ export interface MutationToCreateArticleArgs {
   data: GQLArticleInput;
 }
 export interface MutationToCreateArticleResolver<TParent = any, TResult = any> {
-  (parent: TParent, args: MutationToCreateArticleArgs, context: any, info: GraphQLResolveInfo): TResult;
+  (parent: TParent, args: MutationToCreateArticleArgs, context: any, info: GraphQLResolveInfo): Promise<TResult>;
 }
 
 export interface MutationToUpdateArticleArgs {
@@ -149,5 +151,5 @@ export interface MutationToUpdateArticleArgs {
   data: GQLArticleInput;
 }
 export interface MutationToUpdateArticleResolver<TParent = any, TResult = any> {
-  (parent: TParent, args: MutationToUpdateArticleArgs, context: any, info: GraphQLResolveInfo): TResult;
+  (parent: TParent, args: MutationToUpdateArticleArgs, context: any, info: GraphQLResolveInfo): Promise<TResult>;
 }

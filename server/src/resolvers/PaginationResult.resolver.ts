@@ -8,11 +8,11 @@ import {
 } from '../definitions/schemas';
 
 const list: PaginationResultToListResolver =
-  (parent: GQLPaginationResult, args: {}, context: any, info: GraphQLResolveInfo) => {
+  async (parent: GQLPaginationResult, args: {}, context: any, info: GraphQLResolveInfo) => {
     return parent.list as Array<GQLArticle>;
   };
 const total: PaginationResultToTotalResolver =
-  (parent: GQLPaginationResult, args: {}, context: any, info: GraphQLResolveInfo) => {
+  async (parent: GQLPaginationResult, args: {}, context: any, info: GraphQLResolveInfo) => {
     return parent.total as number;
   };
 

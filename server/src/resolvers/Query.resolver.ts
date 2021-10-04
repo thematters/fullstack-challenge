@@ -9,20 +9,22 @@ import {
   QueryToArticleResolver,
 } from '../definitions/schemas';
 import MockArticles from '../mock/articles.json';
-import MockArticle from '../mock/article.json';
+import { ApolloContext } from '../definitions/context';
 
 const articles: QueryToArticlesResolver =
-  (_, args: QueryToArticlesArgs, context: any, info: GraphQLResolveInfo) => {
-    const listWithType = MockArticles.list.map(article => ({ ...article, __typename: 'Article' }))
+  async (_, args: QueryToArticlesArgs, context: ApolloContext, info: GraphQLResolveInfo) => {
+    const [ articles, total ] = await context.dataSources.articleDatabaseAPI.getArticles(args.pagination)
     return {
-      ...MockArticles,
-      list: listWithType,
-    } as GQLPaginationResult;
+      list: articles.map(article =>
+        ({ ...article, __typename: 'Article' })
+      ),
+      total
+    };
   };
 
 const article: QueryToArticleResolver =
-  (_, args: QueryToArticleArgs, context: any, info: GraphQLResolveInfo) => {
-    return MockArticle as GQLArticle;
+  async (_, args: QueryToArticleArgs, context: ApolloContext, info: GraphQLResolveInfo) => {
+    return context.dataSources.articleDatabaseAPI.getArticle(args.id)
   };
 
 const resolver: GQLQueryTypeResolver = {

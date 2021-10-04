@@ -5,14 +5,14 @@ import { Helmet } from 'react-helmet'
 import { useParams, Link, useHistory } from 'react-router-dom';
 import PagingTable from '../components/PagingTable'
 import { ArticlePreviewInfo } from '../definitions/Model.d'
-import { gql, useQuery } from '@apollo/client';
+import { gql, useLazyQuery } from '@apollo/client';
 import Warning from '../components/Warning'
 
 const PAGE_SIZE = 10;
 
 const GET_ARTICLE_PAGE = gql`
-  query GET_ARTICLE_PAGE($page: Int!, $pageSize: Int!) {
-    articles(pagination: { page: $page, pageSize: $pageSize }) {
+  query GET_ARTICLE_PAGE($afterHash: String, $beforeHash: String, $page: Int!, $pageSize: Int!) {
+    articles(pagination: { afterHash: $afterHash, beforeHash: $beforeHash, page: $page, pageSize: $pageSize }) {
       list {
         ... on Article {
           id
@@ -27,10 +27,33 @@ const GET_ARTICLE_PAGE = gql`
 
 const HomePage = () => {
   const { page = 1 } = useParams<{ page: string }>();
-  const { loading, error, data, refetch } = useQuery(GET_ARTICLE_PAGE, {
-    variables: { page: Number(page), pageSize: PAGE_SIZE },
+  const [load, { loading, error, data, variables, refetch, called }] = useLazyQuery(GET_ARTICLE_PAGE, {
+    fetchPolicy: 'network-only',
+    notifyOnNetworkStatusChange: true
   });
-  useEffect(() => { refetch() }, [page])
+  useEffect(() => {
+    const list = data?.articles.list ?? []
+    let options = {
+      variables: {
+        afterHash: undefined,
+        beforeHash: undefined,
+        page: Number(page),
+        pageSize: PAGE_SIZE
+      }
+    }
+    
+    if (variables && list.length > 0) {
+      if (variables.page + 1 === Number(page)) {
+        console.log('afterHash')
+        options.variables.afterHash = list[list.length - 1].id
+      } else if (variables.page - 1 === Number(page)) {
+        console.log('beforeHash')
+        options.variables.beforeHash = list[0].id
+      }
+    }
+    
+    load(options);
+  }, [page])
   const history = useHistory();
   return (
     <React.Fragment>
@@ -67,21 +90,10 @@ const HomePage = () => {
               message={error?.message}
             />
           )}
-          {(!error && data) && (
+          {(!error) && (
             <PagingTable<ArticlePreviewInfo>
               tableProp={{
                 columns: [
-                  {
-                    referencedDataPropertyName: 'id',
-                    title: 'ID',
-                    headCSS: {
-                      width: '100px',
-                      textAlign: 'left'
-                    },
-                    cellCSS: {
-                      padding: '8px 16px',
-                    }
-                  },
                   {
                     referencedDataPropertyName: 'title',
                     title: 'Title',

@@ -1,5 +1,5 @@
 type Article {
-  id: Int!
+  id: String!
   title: String!
   content: String!
   createdTimestamp: Int!
@@ -23,10 +23,10 @@ input ArticleInput {
 
 type Query {
   articles(pagination: PaginationInput!): PaginationResult
-  article(id: Int!): Article
+  article(id: String!): Article
 }
 
 type Mutation {
   createArticle(data: ArticleInput!): Article
-  updateArticle(id: Int!, data: ArticleInput!): Article
+  updateArticle(id: String!, data: ArticleInput!): Article
 }

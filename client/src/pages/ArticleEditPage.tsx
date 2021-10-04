@@ -10,7 +10,7 @@ import { context as NotificationContext } from '../components/Notification'
 import Warning from '../components/Warning'
 
 const GET_ARTICLE = gql`
-  query Article($id: Int!) {
+  query Article($id: String!) {
     article(id: $id) {
       id
       title
@@ -21,7 +21,7 @@ const GET_ARTICLE = gql`
 `;
 
 const UPDATE_ARTICLE = gql`
-  mutation UPDATE($id: Int!, $title: String!, $content: String!) {
+  mutation UPDATE($id: String!, $title: String!, $content: String!) {
     updateArticle(id: $id, data: { title: $title, content: $content }) {
       id
     }
@@ -37,7 +37,7 @@ const ArticleEditPage = () => {
     data,
     refetch
   } = useQuery(GET_ARTICLE, {
-    variables: { id: Number(id) },
+    variables: { id },
   });
   const [updateArticle, {
     data: updateResult,

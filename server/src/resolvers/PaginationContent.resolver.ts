@@ -1,7 +1,5 @@
 import { GraphQLResolveInfo } from 'graphql';
 import {
-  GQLPaginationContent,
-  GQLPossiblePaginationContentTypeNames,
   GQLPaginationContentTypeResolver,
 } from '../definitions/schemas';
 

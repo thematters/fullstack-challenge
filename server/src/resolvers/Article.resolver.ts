@@ -9,8 +9,8 @@ import {
 } from '../definitions/schemas';
 
 const id: ArticleToIdResolver =
-  (parent: GQLArticle, args: {}, context: any, info: GraphQLResolveInfo) => {
-    return parent.id as number;
+  async (parent: GQLArticle, args: {}, context: any, info: GraphQLResolveInfo) => {
+    return parent.id as string;
   };
 const title: ArticleToTitleResolver =
   (parent: GQLArticle, args: {}, context: any, info: GraphQLResolveInfo) => {

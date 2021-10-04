@@ -13,7 +13,7 @@ import { GraphQLResolveInfo } from 'graphql';
  *                             *
  *******************************/
 export interface GQLArticle {
-  id: number;
+  id: string;
   title: string;
   content: string;
   createdTimestamp: number;
@@ -126,7 +126,7 @@ export interface QueryToArticlesResolver<TParent = any, TResult = any> {
 }
 
 export interface QueryToArticleArgs {
-  id: number;
+  id: string;
 }
 export interface QueryToArticleResolver<TParent = any, TResult = any> {
   (parent: TParent, args: QueryToArticleArgs, context: any, info: GraphQLResolveInfo): TResult;
@@ -145,7 +145,7 @@ export interface MutationToCreateArticleResolver<TParent = any, TResult = any> {
 }
 
 export interface MutationToUpdateArticleArgs {
-  id: number;
+  id: string;
   data: GQLArticleInput;
 }
 export interface MutationToUpdateArticleResolver<TParent = any, TResult = any> {

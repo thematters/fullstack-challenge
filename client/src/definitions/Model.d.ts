@@ -1,12 +1,12 @@
 
 export interface ArticlePreviewInfo {
-  id: number,
+  id: string,
   title: string,
   createdTimestamp: number
 }
 
 export interface ArticleDetailInfo {
-  id: number,
+  id: string,
   title: string,
   content: string,
   createdTimestamp: number

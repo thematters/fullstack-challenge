@@ -27,7 +27,7 @@ const GET_ARTICLE_PAGE = gql`
 
 const HomePage = () => {
   const { page = 1 } = useParams<{ page: string }>();
-  const [load, { loading, error, data, variables, refetch, called }] = useLazyQuery(GET_ARTICLE_PAGE, {
+  const [load, { loading, error, data, variables }] = useLazyQuery(GET_ARTICLE_PAGE, {
     fetchPolicy: 'network-only',
     notifyOnNetworkStatusChange: true
   });

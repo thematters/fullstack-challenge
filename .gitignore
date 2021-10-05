@@ -8,7 +8,7 @@
 .DS_store
 
 # Local env
-.env
+# .env
 
 # Dependency directories
 node_modules

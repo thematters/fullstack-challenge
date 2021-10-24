@@ -1,0 +1,18 @@
+type Mutation {
+  addArticle(title: String, content: String): Article
+}
+
+type Article {
+  title: String
+  content: String
+}
+
+input ArticleInput {
+  title: String
+  content: String
+}
+
+type Query {
+  getArticles: [Article]
+}
+

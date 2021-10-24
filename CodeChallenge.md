@@ -1,19 +1,19 @@
 # Full-stack Engineer Code Challenge
 
-Please write a simple website with the below features. 
+Please write a simple website with the below features.
 
-In order to make the process shorter, we've provided template and config exmaples in [`client`](./client) and [`server`](./server), and feel free to refactor them and use your favorite tools and packages.
+In order to make the process shorter, we've provided template and config examples in [`client`](./client) and [`server`](./server), and feel free to refactor them and use your favorite tools and packages.
 
 ## Required features
 
 1. UI that can render list of stored articles.
 2. UI for user to submit an article with title and text.
-3. After the user submit, store the article and display notification stating the reuqest is successful or failed.
+3. After the user submit, store the article and display notification stating the request is successful or failed.
 
-## Bouns features
+## Bonus features
 
 1. Generate (or redirect to) an URL for the article.
-2. Pagnation of article list.
+2. Pagination of article list.
 
 ## Recommended stack:
 

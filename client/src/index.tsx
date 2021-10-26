@@ -39,7 +39,7 @@ const ArticleList = (props: ArticleListProps): React.ReactElement => {
     <div>
       <AddButton onClick={() => props.setPostMode()}>New post</AddButton>
       {props.articles.map((article: Article) => (
-        <ArticleContainer>
+        <ArticleContainer key={article.id}>
           <ArticleTitle>{article.title}</ArticleTitle>
           <ArticleContent>{article.content}</ArticleContent>
         </ArticleContainer>
@@ -120,7 +120,7 @@ const App = (): React.ReactElement => {
   const [message, setMessage] = useState("" as string);
   const [isErrorMessage, setIsErrorMessage] = useState(false as boolean);
   const { data, refetch } = useQuery(GET_ARTICLE_QUERY);
-  const articles: Article[] = data != null ? data.getArticles : [];
+  const articles: Article[] = data != null ? data.articles : [];
 
   useEffect(() => {
     setTimeout(() => {

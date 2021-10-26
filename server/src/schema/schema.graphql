@@ -3,16 +3,12 @@ type Mutation {
 }
 
 type Article {
-  title: String
-  content: String
-}
-
-input ArticleInput {
+  _id: String
   title: String
   content: String
 }
 
 type Query {
-  getArticles: [Article]
+  articles: [Article]
 }
 

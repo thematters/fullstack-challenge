@@ -5,11 +5,16 @@
   "engines": {
     "node": ">=12"
   },
+  "resolutions": {
+    "styled-components": "^5"
+  },
   "scripts": {
-    "start": "parcel -p 8000 watch src/index.html --open"
+    "start": "parcel -p 8000 watch src/index.html --open",
+    "prettier": "prettier --write ."
   },
   "dependencies": {
     "@apollo/react-hooks": "^4.0.0",
+    "@types/styled-components": "^5.1.15",
     "apollo-boost": "^0.4.9",
     "apollo-client": "^2.6.4",
     "dotenv": "^8.2.0",
@@ -20,6 +25,9 @@
     "react": ">=15",
     "react-dom": "^16.8.0",
     "react-router-dom": "^5.3.0",
+    "s": "^1.0.0",
+    "src": "^1.1.2",
+    "styled-components": "^5.3.3",
     "typescript": "^3.9.7"
   },
   "devDependencies": {

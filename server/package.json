@@ -6,10 +6,12 @@
     "node": ">=12"
   },
   "scripts": {
-    "start": "NODE_ENV=development nodemon src/index.ts"
+    "start": "NODE_ENV=development nodemon src/index.ts",
+    "prettier": "prettier --write ."
   },
   "dependencies": {
     "@types/orbit-db": "https://github.com/orbitdb/orbit-db-types.git",
+    "@types/uuid": "^8.3.1",
     "apollo": "^2.30.2",
     "apollo-server": "^2.16.1",
     "dotenv": "^8.2.0",
@@ -18,12 +20,10 @@
     "graphql-tools": "^6.0.16",
     "ipfs": "^0.55.4",
     "ipfs-http-client": "^45.0.0",
-    "orbit-db": "^0.24.2",
+    "orbit-db": "^0.26.1",
     "pg": "^8.3.0",
-    "sequelize": "^6.8.0",
-    "sequelize-cli": "^6.2.0",
-    "sqlite3": "^5.0.2",
-    "typescript": "^4.4.4"
+    "typescript": "^4.4.4",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/dotenv": "^8.2.0",

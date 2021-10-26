@@ -1,14 +1,18 @@
+import { v4 } from 'uuid';
+import dbService from "../utils/database";
+
 export const resolvers = {
   Query: {
-    getArticles: async (_: any, args: any, context: any, info: any) => {
-      return context.models.Article.findAll();
+    articles: async (_: any, args: any, context: any, info: any) => {
+      return await dbService.getAllArticles();
     },
   },
   Mutation: {
     addArticle: async (_: any, args: any, context: any, info: any) => {
       const { title, content } = args;
-      const article = { title, content };
-      return context.models.Article.create(article)
+      const _id = v4();
+      const article = { _id, title, content };
+      return await dbService.addArticle(article)
     },
   },
 }

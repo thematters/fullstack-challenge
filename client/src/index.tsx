@@ -4,36 +4,45 @@
  *
  */
 import { render } from "react-dom";
-import { ApolloProvider, useMutation, useQuery } from "@apollo/client";
+import { ApolloProvider, useQuery, useMutation } from "@apollo/client";
 import { client } from "./graphql/ApolloClient";
 import React, { useState, useEffect } from "react";
+import {
+  Container,
+  Message,
+  AddButton,
+  ArticleContainer,
+  ArticleTitle,
+  ArticleContent,
+  TitleContainer,
+  TitleLabel,
+  TitleInput,
+  ContentInput,
+  ButtonContainer,
+  Button,
+} from "./styles";
 import {
   GET_ARTICLE_QUERY,
   ADD_ARTICLE_MUTATION,
 } from "./graphql/mutations/article";
-
-type Article = { title: string; content: string };
+import { Mode, Article } from "./types";
+// import {CreateArticle} from "./components/CreateArticle";
+// import {ArticleList} from "./components/ArticleList";
 
 type ArticleListProps = {
   articles: Article[];
   setPostMode: () => void;
 };
+
 const ArticleList = (props: ArticleListProps): React.ReactElement => {
   return (
-    <div style={{ padding: "0 50px" }}>
-      <button
-        style={{ width: "250px", height: "50px", fontSize: "25px" }}
-        onClick={() => props.setPostMode()}
-      >
-        New post
-      </button>
+    <div>
+      <AddButton onClick={() => props.setPostMode()}>New post</AddButton>
       {props.articles.map((article: Article) => (
-        <div
-          style={{ borderBottom: "1px solid #c4c4c4", paddingBottom: "20px" }}
-        >
-          <h2>{article.title}</h2>
-          <div>{article.content}</div>
-        </div>
+        <ArticleContainer key={article.id}>
+          <ArticleTitle>{article.title}</ArticleTitle>
+          <ArticleContent>{article.content}</ArticleContent>
+        </ArticleContainer>
       ))}
     </div>
   );
@@ -80,52 +89,38 @@ const CreateArticle = (props: CreateArticleProps): React.ReactElement => {
   };
 
   return (
-    <div style={{ margin: "50px 0 0 50px" }}>
-      <div style={{ height: "50px" }}>
-        <label htmlFor="title">Title:</label>
-        <input
-          style={{ height: "30px", width: "500px", marginLeft: "10px" }}
+    <div>
+      <TitleContainer>
+        <TitleLabel htmlFor="title">Title:</TitleLabel>
+        <TitleInput
           type="text"
           id="title"
           name="title"
           value={title}
           onChange={handleTitleInput}
         />
-      </div>
-      <textarea
-        style={{ height: "400px", width: "550px", padding: "10px" }}
+      </TitleContainer>
+      <ContentInput
         id="content"
         name="content"
         placeholder="Say something"
         value={content}
         onChange={handleContentInput}
       />
-      <div>
-        <button
-          style={{ width: "150px", height: "50px" }}
-          onClick={handleCancel}
-        >
-          Cancel
-        </button>
-        <button
-          style={{ width: "150px", height: "50px", marginLeft: "10px" }}
-          onClick={handleSubmit}
-        >
-          Submit
-        </button>
-      </div>
+      <ButtonContainer>
+        <Button onClick={handleCancel}>Cancel</Button>
+        <Button onClick={handleSubmit}>Submit</Button>
+      </ButtonContainer>
     </div>
   );
 };
 
-type modeType = "view" | "post";
-
 const App = (): React.ReactElement => {
-  const [mode, setMode] = useState("view" as modeType);
+  const [mode, setMode] = useState("view" as Mode);
   const [message, setMessage] = useState("" as string);
-  const [isErrorMessage, setIsErrorMessage] = useState(true as boolean);
+  const [isErrorMessage, setIsErrorMessage] = useState(false as boolean);
   const { data, refetch } = useQuery(GET_ARTICLE_QUERY);
-  const articles: Article[] = data != null ? data.getArticles : [];
+  const articles: Article[] = data != null ? data.articles : [];
 
   useEffect(() => {
     setTimeout(() => {
@@ -142,18 +137,10 @@ const App = (): React.ReactElement => {
   };
 
   return (
-    <div>
-      <div
-        style={{
-          margin: "50px 0 0 50px",
-          height: message !== "" ? "50px" : "0",
-          color: isErrorMessage ? "red" : "black",
-          fontSize: "20px",
-          textAlign: "center",
-        }}
-      >
+    <Container>
+      <Message message={message} isErrorMessage={isErrorMessage}>
         {message}
-      </div>
+      </Message>
       {mode === "view" ? (
         <ArticleList articles={articles} setPostMode={setPostMode} />
       ) : (
@@ -163,7 +150,7 @@ const App = (): React.ReactElement => {
           setViewMode={setViewMode}
         />
       )}
-    </div>
+    </Container>
   );
 };
 

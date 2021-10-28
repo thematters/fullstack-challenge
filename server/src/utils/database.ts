@@ -20,17 +20,14 @@ class database {
   }
 
   getAllArticles = async () => {
-    return this.articleStore.all.map(article => article.payload.value)
+    const articles = this.articleStore.all.map(article => article.payload.value)
+    return articles
   }
 
   addArticle = async (article: Article) => {
-    try {
-      await this.articleStore.put(article)
-      const newArticle = this.articleStore.get(article._id)
-      return newArticle
-    } catch (err: any) {
-      console.log(err.message)
-    }
+    await this.articleStore.put(article)
+    const newArticle = this.articleStore.get(article._id)
+    return newArticle
   }
 }
 

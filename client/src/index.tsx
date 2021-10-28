@@ -27,7 +27,7 @@ import {
 } from "./graphql/mutations/article";
 import { Mode, Article } from "./types";
 // import {CreateArticle} from "./components/CreateArticle";
-// import {ArticleList} from "./components/ArticleList";
+// import ArticleList from "./components/ArticleList";
 
 type ArticleListProps = {
   articles: Article[];
@@ -39,7 +39,7 @@ const ArticleList = (props: ArticleListProps): React.ReactElement => {
     <div>
       <AddButton onClick={() => props.setPostMode()}>New post</AddButton>
       {props.articles.map((article: Article) => (
-        <ArticleContainer key={article.id}>
+        <ArticleContainer key={article._id}>
           <ArticleTitle>{article.title}</ArticleTitle>
           <ArticleContent>{article.content}</ArticleContent>
         </ArticleContainer>
@@ -57,26 +57,32 @@ type CreateArticleProps = {
 const CreateArticle = (props: CreateArticleProps): React.ReactElement => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [addArticle, { error }] = useMutation(ADD_ARTICLE_MUTATION);
+  const [addArticle] = useMutation(ADD_ARTICLE_MUTATION);
+
   const handleTitleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.currentTarget;
     setTitle(value);
   };
+
   const handleContentInput = (
     event: React.ChangeEvent<HTMLTextAreaElement>
   ) => {
     const { value } = event.currentTarget;
     setContent(value);
   };
+
   const handleSubmit = () => {
-    addArticle({ variables: { title, content } });
-    if (error != null) {
-      props.setMessage(error.message);
-      props.setIsErrorMessage(true);
-    } else {
-      props.setMessage("Your article has been posted.");
-      props.setIsErrorMessage(false);
-    }
+    addArticle({
+      variables: { title, content },
+    })
+      .then((res) => {
+        props.setMessage("Your article has been posted.");
+        props.setIsErrorMessage(false);
+      })
+      .catch((error) => {
+        props.setMessage(error.message);
+        props.setIsErrorMessage(true);
+      });
     setTitle("");
     setContent("");
     props.setViewMode();
@@ -119,8 +125,8 @@ const App = (): React.ReactElement => {
   const [mode, setMode] = useState("view" as Mode);
   const [message, setMessage] = useState("" as string);
   const [isErrorMessage, setIsErrorMessage] = useState(false as boolean);
-  const { data, refetch } = useQuery(GET_ARTICLE_QUERY);
-  const articles: Article[] = data != null ? data.articles : [];
+  const { data } = useQuery(GET_ARTICLE_QUERY);
+  let articles: Article[] = data != null ? data.articles : [];
 
   useEffect(() => {
     setTimeout(() => {
@@ -130,8 +136,9 @@ const App = (): React.ReactElement => {
 
   const setViewMode = () => {
     setMode("view");
-    refetch();
+    window.location.reload();
   };
+
   const setPostMode = () => {
     setMode("post");
   };

@@ -1,3 +1,3 @@
 export type Mode = "view" | "post";
 
-export type Article = { id: string, title: string; content: string };
+export type Article = { _id: string, title: string; content: string };

@@ -11,7 +11,7 @@ require('dotenv').config()
 
 import { ApolloServer } from 'apollo-server'
 import { resolvers } from './resolvers/resolvers'
-const allowedOrigins = ['http://localhost:8000', "http://localhost:5001"];
+const allowedOrigins = [process.env.FRONTEND_URL as string];
 
 const server = new ApolloServer({
   cors: {
@@ -28,7 +28,7 @@ const server = new ApolloServer({
 const startsServer = async () => {
   await database.startDB()
   server
-    .listen({ port: '5000' })
+    .listen({ port: process.env.PORT })
     .then(({ url }) => console.log(`Server is ready at ${url}`))
 }
 

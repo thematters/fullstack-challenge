@@ -3,16 +3,17 @@ import dbService from "../utils/database";
 
 export const resolvers = {
   Query: {
-    articles: async (_: any, args: any, context: any, info: any) => {
+    articles: async () => {
       return await dbService.getAllArticles();
     },
   },
   Mutation: {
-    addArticle: async (_: any, args: any, context: any, info: any) => {
+    addArticle: async (_: any, args: any) => {
       const { title, content } = args;
       const _id = v4();
       const article = { _id, title, content };
-      return await dbService.addArticle(article)
+      const newArticle = await dbService.addArticle(article)
+      return newArticle
     },
   },
 }

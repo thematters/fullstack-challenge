@@ -1,3 +1,9 @@
-# Start the server with
+# Instructions
+
+## Install dependencies
+
+yarn
+
+## Start the server with
 
 yarn start

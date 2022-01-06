@@ -1,14 +1,15 @@
 # Full-stack Engineer Code Challenge
 
-Please write a simple website with the below features. 
+Please write a simple website with the below features, and include enough comments to demonstrate your design.
 
 In order to make the process shorter, we've provided template and config exmaples in [`client`](./client) and [`server`](./server), and feel free to refactor them and use your favorite tools and packages.
 
 ## Required features
 
-1. UI that can render list of stored articles.
-2. UI for user to submit an article with title and text.
-3. After the user submit, store the article and display notification stating the reuqest is successful or failed.
+1. UI for the user to sign-in with Ethereum, via standard wallet such as MetaMask. 
+2. UI that can render list of stored articles, displaying author's address.
+3. UI for user to submit an article with title and text.
+4. After the user submit, store the article and display notification stating the reuqest is successful or failed.
 
 ## Bouns features
 

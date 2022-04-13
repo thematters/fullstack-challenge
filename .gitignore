@@ -16,3 +16,21 @@ node_modules
 # Output
 build
 dist
+
+# ormconfig
+ormconfig.json
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# next.js
+.next/
+out/

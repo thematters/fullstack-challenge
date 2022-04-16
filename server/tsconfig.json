@@ -1,20 +1,27 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "strict": true,
+    "declaration": true,
     "removeComments": true,
-    "preserveConstEnums": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2017",
     "sourceMap": true,
-    "target": "esnext",
-    "types": ["node"],
-    "baseUrl": "./src",
-    "paths": {},
-    "pretty": true,
-    "lib": ["es2015", "es2016", "es2017", "esnext", "dom"],
-    "outDir": "./build",
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "strictPropertyInitialization": false
-  },
-  "exclude": ["node_modules"]
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@@database/*": ["database/*"],
+      "@@common/*": ["common/*"],
+      "@@file-upload/*": ["core/file-upload/*"],
+      "@@health-check/*": ["core/health-check/*"]
+    }
+  }
 }

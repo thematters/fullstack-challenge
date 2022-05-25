@@ -1,0 +1,8 @@
+{
+  "../../node_modules/@wagmi/core/connectors/walletConnect/dist/wagmi-core-connectors-walletConnect.esm.js -> @walletconnect/ethereum-provider": {
+    "id": "../../node_modules/@wagmi/core/connectors/walletConnect/dist/wagmi-core-connectors-walletConnect.esm.js -> @walletconnect/ethereum-provider",
+    "files": [
+      "static/chunks/node_modules_walletconnect_ethereum-provider_dist_esm_index_js.js"
+    ]
+  }
+}

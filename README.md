@@ -4,8 +4,40 @@ The challenge consists of two parts:
 * [Code Challenge](./CodeChallenge.md)
 * [Written Challenge](./WrittenChallenge.md)
 
-Please clone this repo and submit your work in a seperate fork.
+## Demo
+Landing page
+![lading](./demo/landing.png)
+Connect wallet
+![connect](./demo/connect.png)
+Article list
+![article list](./demo/list.png)
+Article detail
+![detail](./demo/detail.png)
 
-The challenges are designed to demonstrate the applicant's way of thinking and personal passions. All challenges are open ended, so please feel free to frame the questions as you see fit, or answer them in any way that you think interesting and revealing.
 
-Enjoy and good luck!
+## Get Started
+
+### Client
+Run the development server:
+```js
+npm run dev
+# or
+yarn dev
+```
+Open http://localhost:3000 with your browser to see the result.
+
+#### Tech stack
+- TypeScript, Next.js
+- Tailwindcss, Chakra UI
+- apollo/client 
+
+Feature inplemented: Required features plus bouns features.      
+
+### Server
+Run the development server:
+```
+npm run start
+```
+Open http://localhost:4000 to play around with apollo server playground.
+
+

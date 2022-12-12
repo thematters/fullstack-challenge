@@ -25,7 +25,7 @@ export class ArticleResolver {
   }
 
   @Query(() => ArticleDto)
-  async article(@Args('id', { type: () => ID }, ParseIntPipe) id: number) {
+  async article(@Args('id', { type: () => ID }, ParseIntPipe) id: string) {
     const article = await this.articleRepo.findById(id);
 
     if (!article) {

@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { ormConfig } from './configs/ormconfig';
 import { ArticleModule } from '../core/article/article.module';
+import { OrbitDbModule } from './orbit-db.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { ArticleModule } from '../core/article/article.module';
       driver: ApolloDriver,
       autoSchemaFile: true,
     }),
+    OrbitDbModule,
     ArticleModule,
   ],
 })

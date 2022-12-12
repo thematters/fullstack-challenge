@@ -11,7 +11,7 @@ export class AdminFieldResolver {
   }
 
   @ResolveField()
-  name(@Parent() parent: Article) {
-    return parent.name;
+  title(@Parent() parent: Article) {
+    return parent.title;
   }
 }

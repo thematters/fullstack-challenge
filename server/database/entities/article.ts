@@ -12,7 +12,13 @@ export class ArticleDb {
   id: number;
 
   @Column('varchar')
-  name: string;
+  title: string;
+
+  @Column('varchar')
+  description: string;
+
+  @Column('uuid')
+  createdBy: string;
 
   @CreateDateColumn({ type: 'timestamptz' })
   createdAt: Date;

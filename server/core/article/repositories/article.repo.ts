@@ -1,9 +1,10 @@
-import { Injectable } from '@nestjs/common';
-import { DataSource, QueryRunner } from 'typeorm';
+import { Inject, Injectable } from '@nestjs/common';
+import { ArticleDto } from '../dto/article';
+import { DocumentStore } from 'orbit-db-docstore';
 import { ArticleDb } from '@@database/entities/article';
-import { Article } from '../models/article';
-import { InjectDataSource } from '@nestjs/typeorm';
+import { ArticleFactory } from './article.factory';
 
+export const ARTICLE_STORE_TOKEN = Symbol('articleStore');
 interface FindOptions {
   offset: number;
   limit: number;
@@ -11,51 +12,40 @@ interface FindOptions {
 
 @Injectable()
 export class ArticleRepo {
-  @InjectDataSource()
-  private dataSource: DataSource;
+  @Inject(ARTICLE_STORE_TOKEN)
+  docStore: DocumentStore<ArticleDb>;
 
-  private articleSearchForIdsQuery() {
-    return this.dataSource
-      .createQueryBuilder()
-      .select('DISTINCT article.id', 'id')
-      .from(ArticleDb, 'article');
-  }
+  @Inject(ArticleFactory)
+  articleFactory: ArticleFactory;
 
-  private articleBaseQuery(queryRunner?: QueryRunner) {
-    return this.dataSource
-      .createQueryBuilder(ArticleDb, 'article', queryRunner)
-      .withDeleted();
-  }
+  findById = async (articleId: string) => {
+    const articleDb = await this.docStore.get(articleId);
+
+    return this.articleFactory.createArticle(articleDb);
+  };
+
+  updateById = async (article: ArticleDto) => {
+    await this.docStore.put(article.id, article);
+    return true;
+  };
+
+  removeById = async (articleId: string) => {
+    await this.docStore.del(articleId);
+    return true;
+  };
 
   async count() {
-    return this.articleSearchForIdsQuery().getCount();
+    return Object.values(this.docStore.all).length;
   }
 
   async find(options: FindOptions) {
     const { offset, limit } = options;
-    const ids = await this.articleSearchForIdsQuery()
-      .offset(offset)
-      .limit(limit)
-      .getRawMany()
-      .then((result) => result.map((row) => row.id));
 
-    return this.findByIds(ids) as Promise<Article[]>;
-  }
+    /**
+     * pagination issue: https://github.com/orbitdb/orbit-db/issues/819#issuecomment-702846960
+     * seems like don't have a solution
+     */
 
-  async findByIds(
-    ids: readonly number[],
-    queryRunner?: QueryRunner,
-  ): Promise<(Article | undefined)[]> {
-    const articles = await this.articleBaseQuery(queryRunner)
-      .andWhereInIds(ids)
-      .getMany();
-
-    return articles;
-  }
-
-  async findById(id: number, queryRunner?: QueryRunner) {
-    const [article] = await this.findByIds([id], queryRunner);
-
-    return article;
+    return Object.values(this.docStore.all).slice(offset, limit);
   }
 }

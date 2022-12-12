@@ -6,8 +6,17 @@ export class ArticleDto {
   id: string;
 
   @Field(() => String)
-  name: string;
+  title: string;
+
+  @Field(() => String)
+  description: string;
+
+  @Field(() => String)
+  content: string;
 
   @Field(() => Date)
   createdAt: Date;
+
+  @Field(() => String)
+  createdBy: string;
 }

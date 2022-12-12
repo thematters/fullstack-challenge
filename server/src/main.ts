@@ -3,7 +3,7 @@ configLocalEnvFile();
 
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
-// import { exceptionFactory } from '@@common/misc/exception-factory';
+import { exceptionFactory } from '@@common/misc/exception-factory';
 import { AppModule } from './app.module';
 import { NODE_ENV } from './configs/node-env';
 import { PORT } from './configs/port';
@@ -15,7 +15,7 @@ async function bootstrap() {
   app.useGlobalPipes(
     new ValidationPipe({
       transform: true,
-      // exceptionFactory,
+      exceptionFactory,
     }),
   );
 
@@ -26,6 +26,6 @@ async function bootstrap() {
 
   // app.enableShutdownHooks();
 
-  await app.listen(PORT);
+  await app.listen(PORT).then(() => console.log('servers run on ' + PORT));
 }
 bootstrap();

@@ -10,6 +10,7 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Modal from '@components/Modal'
 import IconImage from './IconImage'
+import { useCopyText } from '../lib/hooks/useCopyText'
 
 interface AccountModalProps {
   open: boolean
@@ -31,6 +32,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 const AccountModal: FC<AccountModalProps> = ({ open, onClose }) => {
   const classes = useStyles()
   const { account, disconnect } = useWallet()
+  const copyText = useCopyText()
 
   const handleDisconnect = () => {
     disconnect()
@@ -52,7 +54,7 @@ const AccountModal: FC<AccountModalProps> = ({ open, onClose }) => {
         </Button>
       </Stack>
       <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1}>
-        <section className={classes.textButton}>
+        <section className={classes.textButton} onClick={() => (account ? copyText(account) : {})}>
           <IconImage src="/images/copy.svg" size={15} />
           Copy Address
         </section>

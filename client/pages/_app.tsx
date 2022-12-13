@@ -6,14 +6,17 @@ import { WalletProvider } from '@context/wallet'
 
 import '@styles/globals.css'
 import { ThemeProvider } from '@mui/material'
+import { SnackbarProvider } from '@components/Snackbar'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WalletProvider>
       <ThemeProvider theme={theme}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <SnackbarProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </SnackbarProvider>
       </ThemeProvider>
     </WalletProvider>
   )

@@ -35,10 +35,13 @@ export const WalletProvider: FC = ({ children }) => {
 
       // get provider
       const provider = await wallet.getProvider()
+
+      if (!provider) throw Error('Provider undefined')
       const web3Provider = new providers.Web3Provider(provider)
 
       // get info
-      const signer = await web3Provider.getSigner()
+      const signer = web3Provider.getSigner()
+
       const account = await signer.getAddress()
       dispatch({ type: 'CONNECT', payload: { wallet, signer, account, provider: web3Provider } })
     } catch (err: any) {

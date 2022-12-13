@@ -6,7 +6,7 @@ export enum ConnectorType {
   WALLET_CONNECT = 'WALLET_CONNECT',
 }
 
-export const connector: { [prop in ConnectorType]: any } = {
+export const connector = {
   [ConnectorType.INJECTED]: new InjectedConnector(),
   [ConnectorType.WALLET_CONNECT]: new WalletConnectConnector(),
 }

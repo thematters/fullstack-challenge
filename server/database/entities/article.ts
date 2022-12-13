@@ -3,8 +3,11 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { AccountDb } from './account';
 
 @Entity('Articles')
 export class ArticleDb {
@@ -25,4 +28,8 @@ export class ArticleDb {
 
   @DeleteDateColumn({ type: 'timestamptz', nullable: true })
   deletedAt: Date | null;
+
+  @ManyToOne(() => AccountDb, (account) => account.articles)
+  @JoinColumn({ name: 'createdBy' })
+  account: AccountDb;
 }

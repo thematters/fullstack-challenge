@@ -12,12 +12,23 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.10.16",
+    "@mui/material": "^5.10.17",
+    "@mui/styles": "^5.10.16",
+    "@usedapp/core": "^1.1.5",
+    "@walletconnect/web3-provider": "^1.7.7",
+    "ethers": "^5.6.4",
+    "eventemitter3": "^4.0.7",
     "graphql": "^16.3.0",
     "next": "^12.1.5",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "swr": "^2.0.0"
   },
   "devDependencies": {
+    "@metamask/providers": "^8.1.1",
     "@types/node": "^17.0.23",
     "@types/react": "17.0.38",
     "eslint": "8.6.0",

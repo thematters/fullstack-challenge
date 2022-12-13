@@ -10,7 +10,7 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Modal from '@components/Modal'
 import IconImage from './IconImage'
-import { useCopyText } from '../lib/hooks/useCopyText'
+import { useCopyText } from '@lib/hooks/useCopyText'
 
 interface AccountModalProps {
   open: boolean
@@ -59,8 +59,10 @@ const AccountModal: FC<AccountModalProps> = ({ open, onClose }) => {
           Copy Address
         </section>
         <section className={classes.textButton}>
-          <IconImage src="/images/link.svg" size={15} />
-          View on Etherscan
+          <a href={account ? `https://etherscan.io/address/${account}` : ''} target="_blank">
+            <IconImage src="/images/link.svg" size={15} />
+            View on Etherscan
+          </a>
         </section>
       </Stack>
     </Modal>

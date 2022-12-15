@@ -19,7 +19,8 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@@database/*": ["database/*"],
+      "@@docstore/*": ["docstore/*"],
+      "@@core/*": ["core/*"],
       "@@common/*": ["common/*"],
       "@@file-upload/*": ["core/file-upload/*"],
       "@@health-check/*": ["core/health-check/*"]

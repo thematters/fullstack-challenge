@@ -4,7 +4,6 @@ export const articles: ArticleDto[] = [
   {
     id: '550e8400-e29b-41d4-a716-446655440000',
     createdBy: '0x48ff4d2c93f09292ad41351ba56976f64b41681b',
-    createdAt: new Date('2022-04-08'),
     title: '【消費券2022】中小企及網店商戶申請資格、支付、營收方法',
     description:
       '10000港幣的消費券即將在2022年發放，據申請資格的民眾最快可於四月收到第一期消費券，年中則能收到第二期消費券。你是否知道2022消費券的申請方法與資格為何？申請時的注意事項有哪些？中小企商家及網店如何把握2022消費券的商機，增加營收？Freehunter整理出2022年度消費券申請資格及方法、注意事項、發放日期、支付平台及中小企刺激消費的策略。在申請2022消費券前，不妨閱覽以下內容。',
@@ -14,7 +13,6 @@ export const articles: ArticleDto[] = [
   {
     id: '440e8400-e29b-41d4-a716-446655440000',
     createdBy: '0x48ff4d2c93f09292ad41351ba56976f64b41681b',
-    createdAt: new Date('2022-04-08'),
     title: '2022年快到了，你還在用接案平台接案？',
     description:
       '‍提起接案，相信各位Freelancer/SOHO族都會想起網上各式各樣的Freelance平台，或是外包網。\n\n儘管此類網站會定期更新各類的招聘帖子，但對於想要成為全職Freelancer/SOHO族的人來說，接案平台未必能夠提供足夠的機會，讓用戶能夠長遠並有效地發展他們的事業。🙅為什麼？趕快一起來看看吧！💥',
@@ -24,7 +22,6 @@ export const articles: ArticleDto[] = [
   {
     id: '330e8400-e29b-41d4-a716-446655440000',
     createdBy: '0x48ff4d2c93f09292ad41351ba56976f64b41681b',
-    createdAt: new Date('2022-04-08'),
     title: '【2022年潮什麼?】5個平面設計趨勢預測！',
     description:
       '眨眼間，2020便來到尾聲。回望2020的平面設計，大概就是離不開漸變色、塗鴉插畫（doodle)和簡約等等。那麼即將來臨的2020，平面設計又會有什麼新的趨勢呢？大家還會繼續到處看到漸變色的運用嗎？',
@@ -34,7 +31,6 @@ export const articles: ArticleDto[] = [
   {
     id: '220e8400-e29b-41d4-a716-446655440000',
     createdBy: '0x48ff4d2c93f09292ad41351ba56976f64b41681b',
-    createdAt: new Date('2022-04-08'),
     title:
       '【數碼營銷Digital Marketing】2022年最新SEO內容營銷價錢指南 | SEO公司',
     description:
@@ -45,7 +41,6 @@ export const articles: ArticleDto[] = [
   {
     id: '000e8400-e29b-41d4-a716-446655440000',
     createdBy: '0x48ff4d2c93f09292ad41351ba56976f64b41681b',
-    createdAt: new Date('2022-04-08'),
     title: '2022年春茗/尾牙籌備攻略！被選中的「同事」必看！',
     description:
       '如果你那麼幸運，成為被「老闆」和「命運」選中的一位：本年度春茗/尾牙的籌委，那麼恭喜你，你可真是「有排忙」（有一陣子要忙）啦！😹 作為籌委的你除了要佈置活動流程、邀請嘉賓到場出席外；還要找合適的司儀，以及現場攝影師配合你當天的安排！\n\n🤯正頭痛著在哪裏找春茗司儀、攝影師，以及表演嘉賓？可以考慮使用Freehunter啊！',

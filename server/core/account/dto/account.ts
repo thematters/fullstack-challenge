@@ -1,13 +1,12 @@
-import { Field, ObjectType } from '@nestjs/graphql';
+import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { ArticleDto } from '@@core/article/dto/article';
+import { Article } from '@@core/article/models/article';
 
 @ObjectType('Account')
 export class AccountDto {
-  @Field()
-  id: string;
-
-  @Field()
+  @Field(() => ID)
   address: string;
 
-  @Field()
-  createdBy: string;
+  @Field(() => [ArticleDto])
+  articles: Article[];
 }

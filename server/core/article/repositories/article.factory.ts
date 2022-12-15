@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ArticleDb } from '@@database/entities/article';
+import { ArticleDb } from '@@docstore/entities/article';
 import { plainToModel } from '@@common/misc/plain-to-instance';
 import { Article } from '../models/article';
 
@@ -7,12 +7,11 @@ import { Article } from '../models/article';
 export class ArticleFactory {
   createArticle(articleDb: ArticleDb) {
     const article = plainToModel(Article, {
-      id: articleDb.id,
+      id: articleDb._id,
       title: articleDb.title,
       description: articleDb.description,
-      createdAt: articleDb.createdAt,
+      content: articleDb.content,
       createdBy: articleDb.createdBy,
-      deletedAt: articleDb.deletedAt,
     });
 
     return article;

@@ -1,10 +1,9 @@
 export class Article {
   constructor(
-    public id: number,
+    public id: string,
     public title: string,
     public description: string,
-    public createdAt: Date,
+    public content: string,
     public createdBy: string,
-    public deletedAt: Date | null,
   ) {}
 }

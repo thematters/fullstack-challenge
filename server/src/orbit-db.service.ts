@@ -8,13 +8,18 @@ import { Inject, Injectable } from '@nestjs/common';
 
 export const OrbitDbToken = 'OrbitDbToken';
 
+interface CreateDocStoreInput {
+  storeName: string;
+  indexBy?: string;
+}
+
 @Injectable()
 export class DbService {
   @Inject(OrbitDbToken)
   private db: OrbitDB;
 
-  createDocStore = async <T>(storeName: string): Promise<T> => {
-    const store = await this.db.docstore<T>(storeName);
+  createDocStore = async <T>(input: CreateDocStoreInput): Promise<T> => {
+    const store = await this.db.docstore<T>(input.storeName);
 
     return store;
   };

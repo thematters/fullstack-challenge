@@ -1,5 +1,6 @@
+import { Article } from '@@core/article/models/article';
+
 export class Account {
-  id: string;
   address: string;
-  createdAt: Date;
+  articles: Article[];
 }

@@ -1,19 +1,17 @@
 import { Module } from '@nestjs/common';
-import { ArticleDb } from '../../database/entities/article';
-import { DbService } from '../../src/orbit-db.service';
-import { ArticleRepo, ARTICLE_STORE_TOKEN } from './repositories/article.repo';
+import { ArticleFactory } from './repositories/article.factory';
+import { ArticleRepo } from './repositories/article.repo';
 import { ArticleResolver } from './resolvers/query/article';
+import { CreateArticleResolver } from './resolvers/mutation.create-article';
+import { AccountModule } from '../account/account.module';
 
 @Module({
+  imports: [AccountModule],
   providers: [
+    ArticleFactory,
     ArticleRepo,
     ArticleResolver,
-    {
-      provide: ARTICLE_STORE_TOKEN,
-      useFactory: async (db: DbService) =>
-        db.createDocStore<ArticleDb>('articleStore'),
-      inject: [DbService],
-    },
+    CreateArticleResolver,
   ],
   exports: [ArticleRepo],
 })

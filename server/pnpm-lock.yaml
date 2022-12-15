@@ -15,6 +15,7 @@ specifiers:
   '@types/lodash': ^4.14.184
   '@types/node': ^16.11.56
   '@types/supertest': ^2.0.12
+  '@types/uuid': ^9.0.0
   '@typescript-eslint/eslint-plugin': ^5.35.1
   '@typescript-eslint/parser': ^5.35.1
   apollo-server-express: ^3.10.1
@@ -42,6 +43,7 @@ specifiers:
   tsconfig-paths: ^3.14.1
   typeorm: ^0.3.7
   typescript: ^4.7.4
+  uuid: ^9.0.0
 
 dependencies:
   '@nestjs/apollo': 10.0.22_cqfjt4bhdsgslxudt3o466tvzi
@@ -63,6 +65,7 @@ dependencies:
   rimraf: 3.0.2
   rxjs: 7.5.6
   typeorm: 0.3.7_pg@8.8.0+ts-node@10.9.1
+  uuid: 9.0.0
 
 devDependencies:
   '@nestjs/cli': 8.2.8
@@ -73,6 +76,7 @@ devDependencies:
   '@types/lodash': 4.14.184
   '@types/node': 16.11.56
   '@types/supertest': 2.0.12
+  '@types/uuid': 9.0.0
   '@typescript-eslint/eslint-plugin': 5.35.1_ktjxjibzrfqejavile4bhmzhjq
   '@typescript-eslint/parser': 5.35.1_4rv7y5c6xz3vfxwhbrcxxi73bq
   eslint: 8.22.0
@@ -1118,7 +1122,7 @@ packages:
     engines: {node: ^8.13.0 || >=10.10.0}
     dependencies:
       '@grpc/proto-loader': 0.7.2
-      '@types/node': 16.11.56
+      '@types/node': 18.11.15
     dev: false
 
   /@grpc/proto-loader/0.7.2:
@@ -2357,7 +2361,7 @@ packages:
   /@types/keyv/3.1.4:
     resolution: {integrity: sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==}
     dependencies:
-      '@types/node': 16.11.56
+      '@types/node': 18.11.15
     dev: false
 
   /@types/lodash/4.14.184:
@@ -2386,6 +2390,10 @@ packages:
   /@types/node/16.11.56:
     resolution: {integrity: sha512-aFcUkv7EddxxOa/9f74DINReQ/celqH8DiB3fRYgVDM2Xm5QJL8sl80QKuAnGvwAsMn+H3IFA6WCrQh1CY7m1A==}
 
+  /@types/node/18.11.15:
+    resolution: {integrity: sha512-VkhBbVo2+2oozlkdHXLrb3zjsRkpdnaU2bXmX8Wgle3PUi569eLRaHGlgETQHR7lLL1w7GiG3h9SnePhxNDecw==}
+    dev: false
+
   /@types/node/8.10.66:
     resolution: {integrity: sha512-tktOkFUA4kXx2hhhrB8bIFb5TbwzS4uOhKEmwiD+NoiL0qtP2OQ9mFldbgD4dV1djrlBYP6eBuQZiWjuHUpqFw==}
     dev: false
@@ -2408,7 +2416,7 @@ packages:
   /@types/responselike/1.0.0:
     resolution: {integrity: sha512-85Y2BjiufFzaMIlvJDvTTB8Fxl2xfLo4HgmHzVBz08w4wDePCTjYw66PdrolO0kzli3yam/YCgRufyo1DdQVTA==}
     dependencies:
-      '@types/node': 16.11.56
+      '@types/node': 18.11.15
     dev: false
 
   /@types/retry/0.12.0:
@@ -2436,6 +2444,10 @@ packages:
     resolution: {integrity: sha512-X3HPWTwXRerBZS7Mo1k6vMVR1Z6zmJcDVn5O/31whe0tnjE4te6ZJSJGq1RiqHPjzPdMTfjCFogDJmwng9xHaQ==}
     dependencies:
       '@types/superagent': 4.1.15
+    dev: true
+
+  /@types/uuid/9.0.0:
+    resolution: {integrity: sha512-kr90f+ERiQtKWMz5rP32ltJ/BtULDI5RVO0uavn1HQUOwjx0R1h0rnDYNL0CepF1zL5bSY6FISAfd9tOdDhU5Q==}
     dev: true
 
   /@types/yargs-parser/21.0.0:
@@ -9768,7 +9780,7 @@ packages:
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
       '@types/long': 4.0.2
-      '@types/node': 16.11.56
+      '@types/node': 18.11.15
       long: 4.0.0
     dev: false
 
@@ -9788,7 +9800,7 @@ packages:
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
       '@types/long': 4.0.2
-      '@types/node': 16.11.56
+      '@types/node': 18.11.15
       long: 5.2.0
     dev: false
 
@@ -11389,6 +11401,11 @@ packages:
   /uuid/8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
     hasBin: true
+
+  /uuid/9.0.0:
+    resolution: {integrity: sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==}
+    hasBin: true
+    dev: false
 
   /v8-compile-cache-lib/3.0.1:
     resolution: {integrity: sha512-wa7YjyUGfNZngI/vtK0UHAN+lgDCxBPCylVXGp0zu59Fz5aiGtNXaq3DhIov063MorB+VfufLh3JlF2KdTK3xg==}

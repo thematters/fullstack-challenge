@@ -1,8 +1,9 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { ArticleDto } from '../dto/article';
 import { DocumentStore } from 'orbit-db-docstore';
-import { ArticleDb } from '@@database/entities/article';
+import { ArticleDb } from '@@docstore/entities/article';
 import { ArticleFactory } from './article.factory';
+import { plainToDb } from '@@common/misc/plain-to-instance';
+import { v4 as uuid } from 'uuid';
 
 export const ARTICLE_STORE_TOKEN = Symbol('articleStore');
 interface FindOptions {
@@ -10,32 +11,52 @@ interface FindOptions {
   limit: number;
 }
 
+interface insertArticleInput {
+  title: string;
+  description?: string;
+  content: string;
+  createdBy: string;
+}
+
 @Injectable()
 export class ArticleRepo {
   @Inject(ARTICLE_STORE_TOKEN)
-  docStore: DocumentStore<ArticleDb>;
+  articleStore: DocumentStore<ArticleDb>;
 
   @Inject(ArticleFactory)
   articleFactory: ArticleFactory;
 
   findById = async (articleId: string) => {
-    const articleDb = await this.docStore.get(articleId);
+    const [articleDb] = await this.articleStore.get(articleId);
 
     return this.articleFactory.createArticle(articleDb);
   };
 
-  updateById = async (article: ArticleDto) => {
-    await this.docStore.put(article.id, article);
-    return true;
+  insert = async (input: insertArticleInput) => {
+    const _id = uuid();
+
+    const articleDb = plainToDb(ArticleDb, {
+      _id,
+      title: input.title,
+      description: input.description,
+      content: input.content,
+      createdBy: input.createdBy,
+    });
+
+    await this.articleStore.put(articleDb);
+
+    return this.articleFactory.createArticle(articleDb);
   };
 
   removeById = async (articleId: string) => {
-    await this.docStore.del(articleId);
+    await this.articleStore.del(articleId);
     return true;
   };
 
   async count() {
-    return Object.values(this.docStore.all).length;
+    const articleDbs = await this.articleStore.get('');
+
+    return articleDbs.length;
   }
 
   async find(options: FindOptions) {
@@ -46,6 +67,10 @@ export class ArticleRepo {
      * seems like don't have a solution
      */
 
-    return Object.values(this.docStore.all).slice(offset, limit);
+    const articleDbs = await this.articleStore.get('');
+
+    return articleDbs
+      .map((articleDb) => this.articleFactory.createArticle(articleDb))
+      .slice(offset, limit);
   }
 }

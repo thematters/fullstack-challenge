@@ -1,27 +1,16 @@
 # Full-stack Engineer Code Challenge
 
-Please write a simple website with the below features, and include enough comments to demonstrate your design.
+We have a smart contract for donation and curation. When a user donates to a piece of content through the contract, it emits a `Curation` event that includes the corresponding IPFS CID and the amount of donation. Applications, including Matters.Town, then use the `Curation` event to discover valuable content. The source code can be found [here](https://github.com/thematters/contracts/tree/develop/src/Curation) and the deployment on Polygon can be found [here](https://polygonscan.com/address/0x5edebbdae7b5c79a69aacf7873796bb1ec664db8).
 
-In order to make the process shorter, we've provided template and config exmaples in [`client`](./client) and [`server`](./server), and feel free to refactor them and use your favorite tools and packages.
+Please write a simple web app, service, or module with the above curation contract, on any function you find interesting to build. For example:
 
-## Required features
+- A web app that listens to `Curation` events and displays the content of the CIDs.
+- A service using both timestamp and amount of donation as ranking criteria.
+- A wrapper for the IPFS node that listens to `Curation` events and automatically pins the CID data for some time according to the donation amount.
 
-1. UI for the user to sign-in with Ethereum, via standard wallet such as MetaMask. 
-2. UI that can render list of stored articles, displaying author's address.
-3. UI for user to submit an article with title and text.
-4. After the user submit, store the article and display notification stating the reuqest is successful or failed.
+The scoring of a submission will consider:
 
-## Bouns features
-
-1. Generate (or redirect to) an URL for the article.
-2. Pagnation of article list.
-
-## Recommended stack:
-
-- language: TypeScript
-- frontend: React
-- data fetching: GraphQL
-- server: Node.js
-- storage: IPFS (static), OrbitDB (dynamic)
-
-Note: although using IPFS/OrbitDB on frontend and omit server would be easier, please treat IPFS as an external service, and connect to it via a data fetching layer.
+- Completeness (40%): How complete is it in implementing the intended functionality?
+- Maintainability (30%): Is the code well-modulized and easy to read? Does it contain enough comments to describe what it does?
+- Usefulness (20%): Does it correspond to real needs?
+- Complexity (10%): How challenging is it to implement, and how much can you learn in the process?

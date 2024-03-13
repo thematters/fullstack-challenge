@@ -1,6 +1,6 @@
 # Full-stack Engineer Code Challenge
 
-We have a smart contract for donation and curation. When a user donates to a piece of content through the contract, it emits a `Curation` event that includes the corresponding IPFS CID and the amount of donation. Applications, including Matters.Town, then use the `Curation` event to discover valuable content. The source code can be found [here](https://github.com/thematters/contracts/tree/develop/src/Curation) and the deployment on Polygon can be found [here](https://polygonscan.com/address/0x5edebbdae7b5c79a69aacf7873796bb1ec664db8).
+We have a smart contract for donation and curation. When a user donates to a piece of content through the contract, it emits a `Curation` event that includes the corresponding IPFS CID and the amount of donation. Applications, including Matters.Town, then use the `Curation` event to discover valuable content. The source code can be found [here](https://github.com/thematters/contracts/tree/develop/src/Curation) and the deployment on Optimism can be found [here](https://optimistic.etherscan.io/address/0x5edebbdae7b5c79a69aacf7873796bb1ec664db8) (there are also historical data on [Polygon](https://polygonscan.com/address/0x5edebbdae7b5c79a69aacf7873796bb1ec664db8)).
 
 Please write a simple web app, service, or module with the above curation contract, on any function you find interesting to build. For example:
 
